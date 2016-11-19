@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//src/main/resources/messages_en.properties=UTF-8
+encoding//src/main/resources/messages_fr.properties=UTF-8
+encoding//src/main/webapp/WEB-INF/view/cropper.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/view/profile.jsp=UTF-8

@@ -1,0 +1,168 @@
+/*!
+ * Cropper v0.8.0
+ * https://github.com/fengyuanchen/cropper
+ * Copyright 2014-2015 Fengyuan Chen
+ * Released under the MIT license
+ * Date: 2015-02-19T06:49:29.144Z
+ *
+ * Contributing Author: Schwarze Katze.
+ * Description: Enhanced for the wh project.
+ * Date: 21-08-2016
+ */
+ 
+.cropper-container {
+    position:relative;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    -webkit-tap-highlight-color:transparent;
+    -webkit-touch-callout:none;
+    overflow:hidden !important;
+    width:100% !important;
+    height:100% !important;
+}
+
+.cropper-container img {
+	display:block;
+	width:100%;
+	min-width:0% !important;
+	max-width:none !important;
+	height:100%;
+	min-height:0% !important;
+	max-height:none !important;
+}
+
+.cropper-canvas {
+    position:absolute;
+    top:0%;
+    right:0%;
+    bottom:0%;
+    left:0%;
+    background-color:#FFFFFF;
+    filter:alpha(opacity=0);
+    opacity:0;
+}
+
+.cropper-bg {
+    background-image:url("../../resources/images/canvas-background.jpg");
+}
+
+@media only screen and (max-device-width:767px) {
+	.cropper-bg {
+    	background-image:url("../../resources/images/device-canvas-background.jpg");
+	}
+}
+
+.cropper-viewer {
+	display:block;
+	width:100%;
+	height:100%;	
+	filter:alpha(opacity=20);
+    opacity:0.2;
+    cursor:move;
+    background-color:#D9534F;
+	overflow:hidden;
+}
+
+.cropper-viewer img {
+    display:none !important;
+}
+
+.cropper-cropbox {
+	display:block;
+    position:absolute;
+    left:0%;
+    top:0%;	
+    width:70%;
+    height:70%;
+    border:3px solid #D9534F;
+}
+
+.cropper-face {
+	display:block;
+    position:absolute;
+    left:0%;
+    top:0%;
+	width:100%;
+	height:100%;
+}
+
+/*
+@media only screen and (orientation: portrait) and (max-device-width:768px) {
+	
+	.cropper-cropbox {
+		display:block;
+	    position:absolute;	    
+	    left:7.5% !important;
+	    top:7.5% !important;
+	    width:75%;
+	    height:75%;
+	    border:3px solid green;
+	}
+
+	.cropper-face {
+		display:block;
+	    position:absolute;
+	    left:0%;
+    	top:0%;
+		width:100%;
+		height:100%;
+	}
+	
+}
+
+@media only screen and (orientation: landscape) and (max-device-width:768px) {
+
+	.cropper-cropbox {
+		display:block;
+	    position:absolute;
+	    left:27.5% !important;
+	    top:7.5% !important;	    
+	    width:75%;
+	    height:75%;
+	    border:3px solid yellow;
+	}
+
+	.cropper-face {
+		display:block;
+	    position:absolute;
+	    left:0%;
+    	top:0%;
+		width:100%;
+		height:100%;
+	}
+
+}
+*/
+
+.cropper-invisible {
+    filter:alpha(opacity=0);
+    opacity:0;
+}
+
+.cropper-hide {
+	position:fixed;
+	top:0%;
+	left:0%;
+	z-index:-1;
+	width:auto !important;
+	max-width:none !important;
+	height:auto !important;
+	max-height:none !important;
+	filter:alpha(opacity=0);
+	opacity:0;
+}
+
+.cropper-hidden {
+    display:none !important;
+}
+
+.cropper-move {
+    cursor:move;
+}
+
+.cropper-disabled .cropper-canvas,
+.cropper-disabled .cropper-face {
+    cursor:not-allowed;
+}

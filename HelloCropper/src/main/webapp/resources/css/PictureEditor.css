@@ -1,0 +1,155 @@
+html, body {
+    width:100%;
+    height:100%;
+    margin:-1px 0px 0px 0px;
+    padding:0px;
+}
+
+.picedit-hidden {
+    display:none;
+}
+
+.picedit-button {
+    border-radius:0px;
+}
+
+#picedit-select-btn:hover {
+    background-color:#8252CC;
+    color:#FFFFFF;
+}
+
+#picedit-select-btn input[type=file] {
+	display:block;
+    position:absolute;
+    top:0%;
+    left:0%;
+    width:99.75%;
+    height:100%;
+    margin:0%;
+    padding:0%;
+    font-size:10px;
+    text-align:right;
+    opacity:0;
+    outline:none;
+    cursor:inherit;
+}
+
+#picedit-select-btn {
+    min-width:99.75%;
+    height:100%;
+    color:#FFFFFF;
+    font-size:16px;  
+    background-color:#A366FF;
+    overflow:hidden;
+}
+
+.btn-space {
+    margin-right:0.25%; 
+}
+
+#picedit-save-btn {  
+    margin-left:0%;
+    margin-top:0%;
+    margin-right:0%;
+    margin-bottom:2%;
+    width:49.50%;
+}
+
+#picedit-cancel-btn {
+    margin-left:0.25%;
+    margin-top:0%;
+    margin-right:0%;
+    margin-bottom:2%;
+    width:49.00%;
+}
+
+/* Bootstrap Modal */
+.modal-footer {
+    padding:15px !important;
+    text-align:left !important;
+    border-top:1px solid #E5E5E5 !important;
+}
+
+.modal-open {
+  overflow:hidden !important;
+  position:fixed !important;
+  width:100% !important;
+}
+
+.modal-open .modal {
+  overflow-x:hidden !important;
+  overflow-y:hidden !important;
+}
+
+.picedit-preview-panel {
+    background-color:#337AB7;
+}
+
+.picedit-preview {
+    display:block;
+    position:relative;
+    top:0%;
+    left:0%;
+    width:75%;
+    min-width:200px;
+    max-width:200px;
+    height:200px;
+    min-height:200px;
+    max-height:200px;
+    margin:2% 0% 2% 2%;
+    padding:0%;
+    border:1px solid #BCE8F1;
+    border-radius:4px;
+    overflow:hidden;
+}
+
+.picedit-viewer {
+    display:block;
+    position:relative;
+    top:0%;
+    left:0%;
+    width:75%;
+    min-width:200px;
+    max-width:200px;
+    height:200px;
+    min-height:200px;
+    max-height:200px;
+    margin:2% 0% 2% 2%;
+    padding:0%;
+    border:1px solid #BCE8F1;
+    border-radius:4px;
+    overflow:hidden;
+}
+
+#picedit-alert {
+    margin:0% 2% 1% 2%;
+    border:1px solid #D9534F;
+}
+
+#picedit {
+    width:100%;
+    height:405px;
+    margin-left:0%;
+    margin-top:2%;
+    margin-right:2%;
+    margin-bottom:2%;
+    background-image:url("../../resources/images/canvas-background.jpg");
+}
+
+@media only screen and (max-device-width:767px) { 
+	#picedit {
+	    width:100%;
+	    height:304px;
+	    margin-left:0%;
+	    margin-top:2%;
+	    margin-right:2%;
+	    margin-bottom:2%;
+	    background-image:url("../../resources/images/device-canvas-background.jpg");
+	}
+}
+
+#picedit-modal-spinner {
+    width:20%;
+    height:20%;
+    margin:0% 40% 0% 40%;
+}
