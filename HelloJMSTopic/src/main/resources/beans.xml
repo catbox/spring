@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:jms="http://www.springframework.org/schema/jms"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 	
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+              			   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+              			   http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-4.0.xsd">
+	
+	<!-- Creates a JMS connection factory for ActiveMQ on a specific host name and port -->
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://localhost:61616"/>
+	</bean>
+	
+	<!-- The JmsTemplate aggressively opens and closes resources like sessions since it assumes that resources are cached by the connectionFactory. 
+		 Using the CachingConnectionFactory improves its performance. 
+		 The CachingConnectionFactory is defined by passing the ActiveMQConnectionFactory to its targetConnectionFactory property.		 
+	-->
+	<bean id="cachingConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+		<property name="targetConnectionFactory" ref="connectionFactory"/>
+	</bean>
+	
+	<!-- Message Topic -->
+	<bean id="topic" class="org.apache.activemq.command.ActiveMQTopic">
+		<constructor-arg value="Topic"/>
+	</bean>
+	
+	<!-- JmsTemplate hides the lower level JMS details when sending messages -->	
+	<bean id="jmsTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="cachingConnectionFactory"/>
+		<property name="pubSubDomain" value="true"/>
+	</bean> 
+	 
+	<!-- Bean Declaration -->
+	<bean id="topicSender" class="com.hello.spring.jms.topic.sender.TopicSender"/>	
+	<bean id="asyncTopicFooReceiver" class="com.hello.spring.jms.topic.receiver.AsyncTopicFooReceiver"/>
+	<bean id="asyncTopicBarReceiver" class="com.hello.spring.jms.topic.receiver.AsyncTopicBarReceiver"/>	
+	<bean id="notification" class="com.hello.spring.jms.topic.core.Notification"/>
+	<bean id="notificationRegistry" class="com.hello.spring.jms.topic.core.NotificationRegistry"/>
+										
+	<!-- Listener -->
+	<jms:listener-container connection-factory="connectionFactory" destination-type="topic">
+		<jms:listener destination="Topic" ref="asyncTopicFooReceiver" method="receive"/>
+		<jms:listener destination="Topic" ref="asyncTopicBarReceiver" method="receive"/>
+	</jms:listener-container>
+	
+	<!-- The tag context:component-scan means that the annotated components like @Component, @Service, @Controller and @Service
+    	 are to be scanned automatically by Spring container starting from the given package.
+    -->	
+	<context:component-scan base-package="com.hello.spring.jms.topic.sender, com.hello.spring.jms.topic.receiver"/>
+	
+</beans>
