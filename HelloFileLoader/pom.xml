@@ -1,0 +1,148 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  		 
+	<modelVersion>4.0.0</modelVersion>
+    <groupId>com.spring.hello</groupId>
+  	<artifactId>HelloFileLoader</artifactId>
+  	<packaging>war</packaging>
+  	<version>0.0.1</version>
+  	<name>HelloFileLoader</name>
+  	<url>http://www.hello.com</url>
+  	
+  	<properties>  
+	  	<spring.version>4.0.5.RELEASE</spring.version>
+	  	<javax.servlet.api>2.5</javax.servlet.api>
+	  	<javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>
+	  	<validation.api.version>1.1.0.Final</validation.api.version>
+	  	<!-- 
+  		I initially try to use hibernate validator 5.0.1 but it did not work with TomEE 1.7.1
+  		The tomee pom.xml requires a hibernate-validator of version 4.3.1.Final
+  		See: https://svn.apache.org/repos/asf/tomee/tomee/branches/tomee-1.7.x/pom.xml
+  		I have used the latest of the 4.3.X series with TomEE 1.7.1 and it worked fine.
+  		
+  		But with Tomcat 7.0.40 you will need hibernate validator 5.0.1
+  		<hibernate.validator.version>5.0.1.Final</hibernate.validator.version> 
+  		-->
+	  	<hibernate.validator.version>4.3.2.Final</hibernate.validator.version>
+	  	<commons.io.version>2.4</commons.io.version>
+	  	<commons.fileupload.version>1.3.1</commons.fileupload.version>
+	  	<jackson.core.version>2.4.3</jackson.core.version>
+	  	<jackson.annotations.version>2.4.3</jackson.annotations.version>
+	  	<jackson.databind.version>2.4.3</jackson.databind.version>
+	  	<guava.version>18.0</guava.version>
+	  	<slf4j.version>1.7.10</slf4j.version>
+	  	<log4j.version>1.2.17</log4j.version> 
+	  	<junit.version>4.12</junit.version>
+  	</properties>
+  
+	<dependencies>
+    	<!-- Spring Framework -->
+	    <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<!-- Java Servlet API -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${javax.servlet.api}</version>
+		</dependency>
+		
+		<!-- JSP (JavaServer Pages) allows the creation of web content that has both static and dynamic components -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${javax.servlet.jstl.version}</version>
+		</dependency>
+		
+		<!-- Bean Validation standard API -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>${validation.api.version}</version>
+		</dependency>
+		
+		<!-- Hibernate Framework: Allows to express and validate application constraints -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.validator.version}</version>
+		</dependency>
+				
+		<!-- Commons IO is a library of utilities to assist with developing IO functionality -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons.io.version}</version>
+		</dependency>
+		
+		<!-- The Commons FileUpload package makes it easy to add robust and high-performance file upload capability -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${commons.fileupload.version}</version>
+		</dependency>
+		
+		<!-- Formatter for JSON data format -->
+	    <dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.core.version}</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.annotations.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.databind.version}</version>
+		</dependency>
+		
+	    <!-- Guava Framework: Used for collections, caching, primitives support, concurrency 
+	    	 libraries, common annotations, string processing & I/O -->
+	    <dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
+		
+		<!-- Logging Framework -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		
+		<dependency>
+	    	<groupId>log4j</groupId>
+	    	<artifactId>log4j</artifactId>
+	    	<version>${log4j.version}</version>
+	    </dependency>
+				
+		<!-- Testing Framework -->
+	  	<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+		</dependency>
+    
+	</dependencies>
+  
+  <build>
+    <finalName>HelloFileLoader</finalName>
+  </build>
+  
+</project>

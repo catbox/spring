@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  
+1) xmlns - specifies the main xml namespace for the Dispatcher which in this case is the beans schema.
+2) xmlns:mvc - specifies the namespace referring to the mvc schema.
+3) xmlns:context - specifies the namespace referring to the context schema.
+4) xmlns:xsi - specifies the xml schema instance which contains several built-in attributes that can be used in XML and XSD files.
+5) xsi:schemaLocation - specifies the locations for the schemas.
+
+NOTE: An XML Schema describes the structure of an XML document. 
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"	   
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"		    		  	   
+  	   xmlns:context="http://www.springframework.org/schema/context" 	   
+  	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 	   
+  	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+  	   					   http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+     				       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	
+	<!-- The tag context:component-scan means that the annotated components like Controller, Service 
+    	 are to be scanned automatically by Spring container starting from the given package.
+    	 In this case here, it is the entry point for the Controller. 
+    -->
+	<context:component-scan base-package="com.helloFileLoader.controller"/>
+	
+	<!-- This tag registers a RequestMappingHandlerMapping, a RequestMappingHandlerAdapter, and an ExceptionHandlerExceptionResolver among others
+		 in support of processing requests with annotated controller methods using annotations such as @RequestMapping, @ExceptionHandler, 
+		 @Valid (if JSR-303 Provider is present on the classpath)
+    -->
+    <mvc:annotation-driven/>
+
+	<!-- Location of the pages -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    
+     <!-- Define mapping for resources such as css, fonts, icons & js -->
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+    
+    <!-- Location of messages used for internationalization -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="classpath:messages"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+    
+    <bean id="fileValidator" class="com.helloFileLoader.validator.FileValidator"/>
+		
+    <!-- Provides "maxUploadSize", "maxInMemorySize" and "defaultEncoding" settings as bean properties -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+	
+</beans>

@@ -1,0 +1,53 @@
+/*
+Project: Wishive
+Folder: resources/css
+File: profile.css
+Description: profile style
+Author: Noah
+*/
+
+h3 {
+	color:#286090 !important;
+	margin:0px 0px 10px 0px !important;	
+}
+
+#profileImg {
+	margin:0px 0px 20px 0px !important;
+	padding:0px !important;
+	border-radius:4px !important;
+	border:1px solid #286090 !important;
+}
+
+.profile {
+  margin:0 auto;
+  padding:0;
+  font-weight:normal;
+  background-color:#F2F2F2;
+  color:#585858;
+}
+
+.profile .form-control {
+  position:relative;
+  height:auto;
+  padding:1%;
+  font-size:18px;
+}
+
+.profile .form-control:focus {
+  z-index:1;
+}
+
+.profile label {
+	font-family:"lucida grande",tahoma,verdana,arial,sans-serif !important;
+	font-size:small !important;
+}
+
+.profile input[type="text"] {
+  margin-top:2%;
+}
+
+.profile input[type="password"] {
+  margin-bottom:10px;
+  border-top-left-radius:0px;
+  border-top-right-radius:0px;
+}

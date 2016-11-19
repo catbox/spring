@@ -1,0 +1,127 @@
+/*
+Project: Wishive
+Folder: resources/css
+File: offcanvas.css
+Description: Navigator css layout
+Author: Noah
+*/
+
+body {
+  padding-top:70px;
+}
+
+.navbar-brand {
+  float:left;
+  height:40px;
+  padding:15px 15px;
+  font-size:20px;
+  line-height:20px;
+  color:#FFF !important;
+}
+
+.navbar-brand:hover {
+  color:#286090 !important;  
+}
+
+.nav, .navbar-nav {
+ background-color:#383838 !important	
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color:#FFF;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+  color:#FFF!important;
+  background-color:#4E4E4E !important;
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+  color:#FFF;  
+  background-color:#286090 !important;
+}
+
+/*
+ * Layout setting
+ */
+@media screen and (max-width: 767px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all .25s ease-out;
+         -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+	}
+
+  .row-offcanvas-right {
+    right: 0;
+  }
+
+  .row-offcanvas-left {
+    left: 0;
+  }
+
+  .row-offcanvas-right
+  .sidebar-offcanvas {
+    right: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-right.active {
+    right: 50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left.active {
+    left: 50%; /* 6 columns */
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 50%; /* 6 columns */
+  }
+}
+
+/*  Over writing bootstrap button */
+.wh-logout-btn {
+    -moz-user-select:none !important;
+    background-color:#308330 !important;
+    border:1px solid transparent !important;
+    border-radius:4px !important;
+    cursor:pointer !important;
+    display:inline-block !important;
+    font-size:14px !important;
+    font-weight:500 !important;
+    line-height:1.4 !important;
+    margin:4px 0px 4px -15px !important;
+    padding:10px !important;
+    text-align:center !important;
+    color:#FFF !important;
+}
+
+.wh-logout-btn-default.active, .wh-logout-btn-default.focus, .wh-logout-btn-default:active, .wh-logout-btn-default:focus, .wh-logout-btn-default:hover, .wh-logout-open > .wh-logout-dropdown-toggle.btn-default {
+    background-color:#225C22 !important;
+    border-color:#225C22 !important;
+    color:#FFF !important;
+    
+}
+
+a {
+	text-decoration:none !important;
+	font-family:"lucida grande",tahoma,verdana,arial,sans-serif !important;
+	font-size:14px !important;
+	color:#FFF !important;
+}
+
+a:hover {
+	font-family:"lucida grande",tahoma,verdana,arial,sans-serif !important;
+	font-size:14px !important;
+	color:#FFF !important;
+}
+
