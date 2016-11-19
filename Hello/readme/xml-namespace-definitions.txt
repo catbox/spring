@@ -1,0 +1,21 @@
+xmlns
+-----
+This specifies the main xml namespace for the Dispatcher which in this case is the beans schema.
+
+xmlns:mvc
+---------
+This specifies the namespace referring to the mvc schema.
+
+xmlns:context
+-------------
+This specifies the namespace referring to the context schema.
+
+xmlns:xsi
+---------
+This specifies the xml schema instance which contains several built-in attributes that can be used in XML and XSD files.
+
+xsi:schemaLocation
+------------------
+This specifies the locations for the schemas.
+
+NOTE: An XML Schema describes the structure of an XML document. 

@@ -1,0 +1,143 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.hello.spring</groupId>
+  <artifactId>hello</artifactId>
+  <version>0.0.1</version>
+  <name>Hello</name>
+  <packaging>war</packaging>
+  <url>http://www.hello.com</url>
+  
+  <properties>  
+  	<spring.version>4.0.5.RELEASE</spring.version>
+  	<validation.api.version>1.1.0.Final</validation.api.version>
+  	<!-- 
+  		I initially try to use hibernate validator 5.0.1 but it did not work with TomEE 1.7.1
+  		The tomee pom.xml requires a hibernate-validator of version 4.3.1.Final
+  		See: https://svn.apache.org/repos/asf/tomee/tomee/branches/tomee-1.7.x/pom.xml
+  		I have used the latest of the 4.3.X series with TomEE 1.7.1 and it worked fine.
+  		
+  		But with Tomcat 7.0.40 you will need hibernate validator 5.0.1
+  		<hibernate.validator.version>5.0.1.Final</hibernate.validator.version> 
+  	-->
+  	<hibernate.validator.version>4.3.2.Final</hibernate.validator.version>
+  	<inject.version>1</inject.version>
+  	<java.version>1.7</java.version>
+  	<javax.servlet.api>2.5</javax.servlet.api>
+  	<jackson.core.version>2.4.3</jackson.core.version>
+  	<jackson.annotations.version>2.4.3</jackson.annotations.version>
+  	<jackson.databind.version>2.4.3</jackson.databind.version>
+  	<log4j.version>1.2.17</log4j.version>
+  	<hello.database>1.0.0</hello.database>
+  </properties>
+  
+  <dependencies>
+  
+  	<!-- Spring Framework -->
+  	<dependency>
+    	<groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+    
+    <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-context</artifactId>
+       <version>${spring.version}</version>
+   </dependency>
+   
+   <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context-support</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+	
+	<!-- Java Servlet API -->
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>servlet-api</artifactId>
+		<version>${javax.servlet.api}</version>
+	</dependency>
+	
+	<!-- Hibernate Framework: Allows to express and validate application constraints -->
+	<dependency>
+    	<groupId>org.hibernate</groupId>
+    	<artifactId>hibernate-validator</artifactId>
+    	<version>${hibernate.validator.version}</version>
+	</dependency>
+	
+	 <dependency>
+		<groupId>javax.validation</groupId>
+		<artifactId>validation-api</artifactId>
+		<version>${validation.api.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>javax.inject</groupId>
+		<artifactId>javax.inject</artifactId>
+		<version>${inject.version}</version>
+	</dependency>
+
+	<!-- Formatter for JSON data format -->
+    <dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-core</artifactId>
+		<version>${jackson.core.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-annotations</artifactId>
+		<version>${jackson.annotations.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>${jackson.databind.version}</version>
+	</dependency>
+	
+	<!-- Logging Framework -->
+	<dependency>
+    	<groupId>log4j</groupId>
+    	<artifactId>log4j</artifactId>
+    	<version>${log4j.version}</version>
+    </dependency>
+
+	<!-- Database Service -->
+    <dependency>
+    	<groupId>com.hello.spring</groupId>
+    	<artifactId>hello-database</artifactId>
+    	<version>${hello.database}</version>
+    </dependency>
+    
+  </dependencies>
+  
+  <build>
+    <finalName>Hello</finalName>
+	<plugins>
+    	<plugin>
+        	<artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <source>${java.version}</source>
+                <target>${java.version}</target>
+            </configuration>
+        </plugin>
+	</plugins>
+  </build>
+
+</project>
