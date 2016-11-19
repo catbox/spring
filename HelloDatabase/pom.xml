@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.hello.spring</groupId>
+  <artifactId>hello-database</artifactId>
+  <version>1.0.0</version>
+  <name>Hello Database</name>
+  <url>http://www.hello.com</url>
+  
+  <properties>
+      <guava.version>18.0</guava.version>
+      <junit.version>4.11</junit.version>
+  </properties>
+  
+  <dependencies>
+  	
+	<!-- Guava Framework: Used for collections, caching, primitives support, concurrency 
+         libraries, common annotations, string processing & I/O -->
+  	<dependency>
+		<groupId>com.google.guava</groupId>
+		<artifactId>guava</artifactId>
+		<version>${guava.version}</version>
+	</dependency>
+	
+	<!-- Testing -->
+  	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>${junit.version}</version>
+	</dependency>
+  
+  </dependencies>
+  
+   <!-- Project Name in M2 Repository -->
+  <build>
+      <finalName>HelloDatabase</finalName>
+  </build>
+  
+</project>
