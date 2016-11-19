@@ -1,0 +1,77 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.hello.spring</groupId>
+  <artifactId>HelloSpring</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1</version>
+  <name>Hello Spring</name>
+  <url>http://maven.apache.org</url>
+  
+  <properties>  
+  	<spring.version>4.0.5.RELEASE</spring.version>
+  	<maven.compiler.plugin.version>3.2</maven.compiler.plugin.version>
+  	<java.version>1.7</java.version>
+  	<javax.servlet.api>2.5</javax.servlet.api>
+  	<junit.version>4.11</junit.version>
+  	<log4j.version>1.2.17</log4j.version>
+  </properties>
+  
+  <dependencies>
+  
+  	<dependency>
+    	<groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+    
+    <!-- Java Servlet API -->
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>servlet-api</artifactId>
+		<version>${javax.servlet.api}</version>
+	</dependency>
+      
+    <dependency>
+    	<groupId>junit</groupId>
+      	<artifactId>junit</artifactId>
+      	<version>${junit.version}</version>
+      	<scope>test</scope>
+    </dependency>
+
+    <dependency>
+    	<groupId>log4j</groupId>
+    	<artifactId>log4j</artifactId>
+    	<version>${log4j.version}</version>
+    </dependency>
+    
+  </dependencies>
+  
+  <build>
+    <finalName>HelloSpring</finalName>
+    <plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>${maven.compiler.plugin.version}</version>
+			<configuration>
+				<source>${java.version}</source>
+				<target>${java.version}</target>
+			</configuration>
+		</plugin>
+	</plugins>
+  </build>
+  
+</project>
