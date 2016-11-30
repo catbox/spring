@@ -667,8 +667,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 
 	      var exportDefaults = {
-	        type: 'image/png',
-	        quality: 0.75,
+	        type: 'image/jpeg',
+	        quality: 1.0,
 	        originalSize: false,
 	        fillBg: '#fff'
 	      };
