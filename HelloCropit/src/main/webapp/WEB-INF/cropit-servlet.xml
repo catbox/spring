@@ -20,7 +20,7 @@ NOTE: An XML Schema describes the structure of an XML document.
          are to be scanned automatically by Spring container starting from the given package.
          In this case here, it is the entry point for the Controller. 
     -->
-    <context:component-scan base-package="com.helloCropper.controller"/>
+    <context:component-scan base-package="com.hellocropit.controller"/>
     
     <!-- This tag registers a RequestMappingHandlerMapping, a RequestMappingHandlerAdapter, and an ExceptionHandlerExceptionResolver among others
          in support of processing requests with annotated controller methods using annotations such as @RequestMapping, @ExceptionHandler, 
@@ -60,11 +60,10 @@ NOTE: An XML Schema describes the structure of an XML document.
         <property name="cookieMaxAge" value="31536000"></property>
     </bean>
     -->
-    <!--  
+ 
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
         <property name="defaultLocale" value="en"/>
     </bean>
-    -->
      
     <!-- The interceptor captures requests before or after the controller or just before the response is sent to the view -->   
     <mvc:interceptors>
@@ -73,9 +72,7 @@ NOTE: An XML Schema describes the structure of an XML document.
         </bean>
     </mvc:interceptors>
     
-    <!--  
-    <bean id="profilePictureValidator" class="com.helloCropper.validator.ProfilePictureValidator"/>
-    -->
+    <bean id="profilePictureValidator" class="com.hellocropit.validator.ProfilePictureValidator"/>
     
     <!-- Provides "maxUploadSize", "maxInMemorySize" and "defaultEncoding" settings as bean properties -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>

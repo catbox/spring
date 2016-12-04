@@ -35,6 +35,11 @@ input {
 	margin-top:5%;	
 }
 
+#cropit-alert {
+    margin: 5% 0% 0% 0%;
+    border:1px solid #D9534F;
+}
+
 #cropit-select-btn input[type=file] {
 	display:block;
     position:absolute;
@@ -51,7 +56,7 @@ input {
 	width:200px;
     min-width:200px;
     height:100%;
-    margin-top:15px;
+    margin-top:10px;
     color:#FFFFFF;
     font-size:15px;  
     background-color:#337AB7;

@@ -1,4 +1,5 @@
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -38,11 +39,11 @@
 			           			<img id="cropitimage" src="">
 			       			</div>
 			   			</div>
-				
+
 						<div class="row">
 				            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 				                <label id="cropit-select-btn" class="btn" for="inputImage">
-				                     Update profile picture<input id="inputImage" class="cropit-image-input" type="file">
+				                     <spring:message code="cropit.select.button"/><input id="inputImage" class="cropit-image-input" name="file" type="file" accept="image/*">
 				                </label>                                  
 				            </div>
 			            </div>
@@ -63,6 +64,17 @@
 			   					<button id="cropit-close-btn" class="btn btn-primary fa fa-window-close-o cropit-btn-space" aria-hidden="true"></button>
 			   				</div>
 			   			</div>
+			   			
+			   			<!-- Display errors -->
+		                <div class="row">
+		                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+		                        <div id="cropit-alert" class="alert alert-danger fade in" style="display:none">
+							       <a href="#" class="close" data-dismiss="alert">&times;</a>
+								   <p id="cropit-alert-msg"></p>
+				                </div>
+		                    </div>
+		                </div>
+		                
    					</div>
  				</div>
  			</div>
@@ -77,7 +89,14 @@
 <script>
 	// Function to execute as soon as  the DOM is fully loaded.
     $(document).ready(function() {
-    	cropIt.setUp();  	
+
+    	var messageArray = [];
+    	messageArray[0] = '<spring:message code="cropit.valid.file"/>';
+    	messageArray[1] = '<spring:message code="cropit.file.image"/>';
+    	messageArray[2] = '<spring:message code="cropit.file.too.small"/>';
+    	messageArray[3] = '<spring:message code="cropit.file.too.large"/>';
+    	
+    	cropIt.setUp(messageArray);
     });
 </script>
 </body>

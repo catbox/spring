@@ -139,14 +139,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	_jquery2['default'].fn.cropit = function (method) {
 	  if (methods[method]) {
 	    return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-	  } 
-	  else if (['imageState', 'imageSrc', 'offset', 'previewSize', 'imageSize', 'zoom', 'initialZoom', 'exportZoom', 'minZoom', 'maxZoom', 'setMessages'].indexOf(method) >= 0) {
+	  } else if (['imageState', 'imageSrc', 'offset', 'previewSize', 'imageSize', 'zoom', 'initialZoom', 'exportZoom', 'minZoom', 'maxZoom'].indexOf(method) >= 0) {
 	    return prop.apply(undefined, [this].concat(_slice.call(arguments)));
-	  } 
-	  else if (['rotateCW', 'rotateCCW', 'disable', 'reenable', 'showMessages'].indexOf(method) >= 0) {
+	  } else if (['rotateCW', 'rotateCCW', 'disable', 'reenable'].indexOf(method) >= 0) {
 	    return delegate.apply(undefined, [this].concat(_slice.call(arguments)));
-	  } 
-	  else {
+	  } else {
 	    return methods.init.apply(this, arguments);
 	  }
 	};
@@ -188,31 +185,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	// wh - Array of messages
 	var messagesArray = [];
 	
-	// wh - Close Alert Message.
-	var closeAlertMessage;
-
-	// wh - Alert Message.
-	var alertMessage;
-	
-	// wh - Select a file.
-	var selectFile;
-	
-	// wh - Image type.
-	var imageType;
-	
-	// wh - Image too small.
-	var imageTooSmall;
-	
-	// wh - Image too large.
-	var  imageTooLarge;
-	
 	// wh - 1 MG
 	var mb = 1048576;
 
 	var Cropit = (function () {
 	  function Cropit(jQuery, element, options) {
 	    _classCallCheck(this, Cropit);
-	    
+
 	    this.$el = (0, _jquery2['default'])(element);
 
 	    var defaults = (0, _options.loadDefaults)(this.$el);
@@ -327,40 +306,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.$imageContainer.off('dragover.cropit dragleave.cropit drop.cropit');
 	      this.$zoomSlider.off(_constants.EVENTS.ZOOM_INPUT);
 	    }
-	  }, {
+	  }, /*{
 		key: 'setMessages',
-		set: function setMessages(array) {
-		  selectFile = array[0];
-		  imageType = array[1];
-		  imageTooSmall = array[2];
-		  imageTooLarge = array[3];
-		}
-	  }, {
-		key: 'showMessages',
-		value: function showMessages(msg) {		  
-		  $("#cropit-alert-msg").html(msg);
-		  $("#cropit-alert").show();
-		 }
-	   }, {
+	    value: function setMessages(array) {
+	    	messagesArray = array;
+	    	console.log("Messages: " + messageArray);
+	    }
+	   }*/, {
 	    key: 'onFileChange',
 	    value: function onFileChange(e) {
 	      var loadedFile = this.$fileInput.get(0).files;
 	      var fileAttributes = [];
 	      fileAttributes = loadedFile[0];
-	      
-	      // Validate that the file is an image.
-	      var validImage = (/^image\/\w+$/.test(fileAttributes.type));
-	      
-	      // File size
 	      var fileSize = fileAttributes.size;
-
-	      // File must be an image
-	      if(!validImage){
-	    	  this.showMessages(imageType);
-	      }	     
-	      // Maximum size for the file is 5 MB.
-	      else if(fileSize > 5*(mb)) {    		  
-    		  this.showMessages(imageTooLarge);
+	      
+    	  if(fileSize > 5*(mb)) {
+    		  console.log("File is too large")
+    		  return "file-too-large";
     	  }
     	  else {
     		  this.options.onFileChange(e);
