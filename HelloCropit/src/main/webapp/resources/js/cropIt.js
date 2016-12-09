@@ -35,6 +35,7 @@ cropIt.eventsHandler = function(array) {
     	var imageData = $('.image-editor').cropit('export');
 
     	if(imageData === undefined) {
+    		// File can not be null.
     		$("#cropit-alert-msg").html(array[0]);
     		$("#cropit-alert").show();
     	}
