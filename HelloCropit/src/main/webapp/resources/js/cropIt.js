@@ -15,14 +15,14 @@ cropIt.setUp = function(array) {
     $('.image-editor').cropit('setMessages', array);
 
     // Cropping Events handling. 
-    cropIt.eventsHandler();
+    cropIt.eventsHandler(array);
     
     // Error messages.
     cropIt.setMessage(array);
 };
 
 // Cropping Events handling. 
-cropIt.eventsHandler = function() {
+cropIt.eventsHandler = function(array) {
 	$('.rotate-cw').click(function() {
 		$('.image-editor').cropit('rotateCW');
     });
@@ -33,12 +33,19 @@ cropIt.eventsHandler = function() {
 
     $('.export').click(function() {
     	var imageData = $('.image-editor').cropit('export');
-        window.open(imageData);
+
+    	if(imageData === undefined) {
+    		$("#cropit-alert-msg").html(array[0]);
+    		$("#cropit-alert").show();
+    	}
+    	else {
+    		window.open(imageData);
+    	}   		
     });	
     
     // Close alert message.
-	$(cropIt.closeAlertMessage).on("close.bs.alert", function () {
-		$(cropIt.closeAlertMessage).hide();
+	$("#cropit-alert").on("close.bs.alert", function () {
+		$("#cropit-alert").hide();
 		return false;
 	});
 };
@@ -49,6 +56,6 @@ cropIt.setMessage = function(closeAlertMsg, alertMsg, array) {
 
 // Show alert message.
 cropIt.showAlertMessage = function(msg) {
-	$(cropIt.alertMessage).html(msg);
-	$(cropIt.closeAlertMessage).show();
+	$("#cropit-alert-msg").html(msg);
+	$("#cropit-alert").show();
 };
