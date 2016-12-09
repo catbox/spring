@@ -428,6 +428,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return;
 	      }
 
+	      var img = new Image();
+	      img.src = imageSrc;
+	      var imgWidth = img.width;
+	      var imgHeight = img.height;
+	      
+	      if((imgWidth < 200) || (imgHeight < 200) ) {
+	    	  this.showMessages(imageTooSmall);
+	    	  return;
+	      }
+	      
 	      this.options.onImageLoading();
 	      this.setImageLoadingClass();
 
