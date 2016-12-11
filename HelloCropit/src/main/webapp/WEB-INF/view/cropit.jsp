@@ -21,7 +21,7 @@
 %>
 
 <body>
-<div id="cropit-content" class="container">
+<div id="cropit-content" class="container no-copy">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
   			<div id="cropit-panel" class="panel panel-info">
@@ -61,9 +61,16 @@
 			   					<button id="cropit-rotate-ccw-btn" class="btn btn-primary rotate-ccw fa fa-undo cropit-btn-space" aria-hidden="true"></button>
 					    		<button id="cropit-rotate-cw-btn" class="btn btn-primary rotate-cw fa fa-repeat cropit-btn-space" aria-hidden="true"></button>
 			   					<button id="cropit-save-btn" class="btn btn-primary export fa fa-floppy-o cropit-btn-space" aria-hidden="true"></button>
-			   					<button id="cropit-close-btn" class="btn btn-primary fa fa-window-close-o cropit-btn-space" aria-hidden="true"></button>
+			   					<button id="cropit-cancel-btn" class="btn btn-primary fa fa-window-close-o cropit-btn-space" aria-hidden="true"></button>
 			   				</div>
 			   			</div>
+			   			
+			   			<!-- DEV ONLY -->
+					    <div class="row">
+					        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					            <div id="cropitTracker"></div>
+					        </div>
+					    </div>
 			   			
 			   			<!-- Display errors -->
 		                <div class="row">
@@ -79,7 +86,29 @@
  				</div>
  			</div>
     	</div>
-    </div>	
+    </div>
+    
+    <div id="cropit-modal" class="modal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="modal" aria-labelledby="cropit-modal-label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">      
+                    <h4 id="cropit-modal-label" class="modal-title">Profile Picture</h4>                 
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
+                           <h4>Your profile picture is being updated.</h4>                           
+                           <img id="cropit-modal-spinner" src="resources/images/wh-spinner.gif" alt="spinner">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <img src="resources/images/wh-morse-logo.png" alt="logo">    
+                </div>
+            </div>
+        </div>
+    </div>
+    	
 </div>
 <!-- JavaScript -->
 <script src="resources/js/jquery-1.11.2.min.js"></script>
@@ -94,7 +123,8 @@
     	messageArray[0] = '<spring:message code="cropit.valid.file"/>';
     	messageArray[1] = '<spring:message code="cropit.file.image"/>';
     	messageArray[2] = '<spring:message code="cropit.file.too.small"/>';
-    	messageArray[3] = '<spring:message code="cropit.file.too.large"/>';
+    	messageArray[3] = '<spring:message code="cropit.file.too.large"/>';    	
+    	messageArray[4] = '<spring:message code="cropit.undefined.platform"/>';
     	
     	cropIt.setUp(messageArray);
     });
