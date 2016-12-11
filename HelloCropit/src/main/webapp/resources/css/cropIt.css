@@ -80,6 +80,13 @@ input {
 	display:inline-block !important;
 }
 
+.no-copy {
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */     
+}
+
 /* Base CSS styles for range.
    Several styles need to be applied to range inputs in all browsers to override their basic appearance.
 */
