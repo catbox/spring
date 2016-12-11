@@ -206,6 +206,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	// wh - Image too large.
 	var  imageTooLarge;
 	
+	// Undefined platform.
+	var undefinedPlatform;
+	
 	// wh - 1 MG
 	var mb = 1048576;
 
@@ -334,6 +337,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		  imageType = array[1];
 		  imageTooSmall = array[2];
 		  imageTooLarge = array[3];
+		  undefinedPlatform = array[4];
 		}
 	  }, {
 		key: 'showMessages',
@@ -428,16 +432,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return;
 	      }
 
-	      var img = new Image();
-	      img.src = imageSrc;
-	      var imgWidth = img.width;
-	      var imgHeight = img.height;
-	      
-	      if((imgWidth < 200) || (imgHeight < 200) ) {
-	    	  this.showMessages(imageTooSmall);
-	    	  return;
+	      if(!(this.iOSDevice())) {
+	    	  var img = new Image();
+		      img.src = imageSrc;
+		      var imgWidth = img.width;
+		      var imgHeight = img.height;
+
+		      if((imgWidth < 200) || (imgHeight < 200) ) {
+		    	  this.showMessages(imageTooSmall);
+		    	  return;
+		      }
 	      }
-	      
+
 	      this.options.onImageLoading();
 	      this.setImageLoadingClass();
 
@@ -502,6 +508,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      this.options.onImageLoaded();
 	    }
+	  }, {
+	    key: 'iOSDevice',
+	    value: function iOSDevice() {
+	    	try {
+	    		var windowNavigatorPlatform = window.navigator.platform;
+	    		if((/iP(hone|od|ad)/).test(windowNavigatorPlatform)) {
+	    	    	return true;
+	    	    }
+	    		else {
+	    			return false;
+	    		}
+	    	}
+	    	catch(error) {
+	    		this.showMessages(undefinedPlatform);
+	    		return false;
+	    	}
+		}
 	  }, {
 	    key: 'onImageError',
 	    value: function onImageError() {
