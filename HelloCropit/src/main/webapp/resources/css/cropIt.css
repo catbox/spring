@@ -7,6 +7,7 @@ html, body {
 
 .panel-info {
     border-color:#337AB7 !important;
+    border-radius:0px !important;
 }
 
 .cropit-preview {
@@ -57,6 +58,7 @@ input {
     min-width:200px;
     height:100%;
     margin-top:10px;
+    border-radius:0px;
     color:#FFFFFF;
     font-size:15px;  
     background-color:#337AB7;
