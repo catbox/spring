@@ -432,18 +432,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return;
 	      }
 
-	      if(!(this.iOSDevice())) {
-	    	  var img = new Image();
-		      img.src = imageSrc;
-		      var imgWidth = img.width;
-		      var imgHeight = img.height;
-
-		      if((imgWidth < 200) || (imgHeight < 200) ) {
-		    	  this.showMessages(imageTooSmall);
-		    	  return;
-		      }
-	      }
-
 	      this.options.onImageLoading();
 	      this.setImageLoadingClass();
 
@@ -476,6 +464,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        smallImage: this.options.smallImage
 	      })) {
 	        this.onImageError(_constants.ERRORS.SMALL_IMAGE);
+	        this.showMessages(imageTooSmall);
 	        if (this.image.src) {
 	          this.setImageLoadedClass();
 	        }
