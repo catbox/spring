@@ -184,33 +184,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _options = __webpack_require__(5);
 
 	var _utils = __webpack_require__(6);
-	
-	// wh - Array of messages
-	var messagesArray = [];
-	
+
 	// wh - Close Alert Message.
 	var closeAlertMessage;
 
 	// wh - Alert Message.
 	var alertMessage;
 	
-	// wh - Select a file.
+	// wh - Select a file Message.
 	var selectFile;
 	
-	// wh - Image type.
+	// wh - Image type Message.
 	var imageType;
 	
-	// wh - Image too small.
+	// wh - Image too small Message.
 	var imageTooSmall;
 	
-	// wh - Image too large.
+	// wh - Image too large Message.
 	var  imageTooLarge;
 	
-	// Undefined platform.
+	// Undefined platform Message.
 	var undefinedPlatform;
 	
-	// wh - 1 MG
-	var mb = 1048576;
+	// File reader support Message.
+	var fileReadferSupport;
+	
+	// wh - 1 Mega Byte.
+	var MB = 1048576;
 
 	var Cropit = (function () {
 	  function Cropit(jQuery, element, options) {
@@ -338,6 +338,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		  imageTooSmall = array[2];
 		  imageTooLarge = array[3];
 		  undefinedPlatform = array[4];
+		  fileReadferSupport = array[5];
 		}
 	  }, {
 		key: 'showMessages',
@@ -363,7 +364,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    	  this.showMessages(imageType);
 	      }	     
 	      // Maximum size for the file is 5 MB.
-	      else if(fileSize > 5*(mb)) {    		  
+	      else if(fileSize > 5*(MB)) {    		  
     		  this.showMessages(imageTooLarge);
     	  }
     	  else {
