@@ -28,11 +28,17 @@ cropIt.loadedFile;
 // Loaded file status.
 cropIt.loadedFileStatus = false;
 
-// 1 MG
+// 1 Mega Byte.
 var MB = 1048576;
 
 // Initialize.
 cropIt.setUp = function(array) {
+	
+	// Verify that the browser supports the FileReader API.
+	if(!window.FileReader) {
+	    document.write("<p><b>" + array[5] +  "</b></p>");
+	    return;
+	}
 	
 	// Load exif.js
 	$.getScript("/HelloCropit/resources/js/ExifReader.js", function() {
@@ -323,6 +329,24 @@ cropIt.sendPicture = function(someName, someFile, someFileName) {
 		$("cropit-modal").modal('hide');
 		cropIt.errorMessage = "An internal error prevented your profile picture from being updated!";
 		cropIt.showAlertMessage(cropIt.errorMessage);
+	}
+};
+
+// Verify if the page is being viewed from an iOS device.
+cropIt.iOSDevice = function() {
+	try {
+		var windowNavigatorPlatform = window.navigator.platform;
+		if((/iP(hone|od|ad)/).test(windowNavigatorPlatform)) {
+	    	return true;
+	    }
+		else {
+			return false;
+		}
+	}
+	catch(error) {
+		cropIt.errorMessage = "Your device platform could not be determined";
+		cropIt.showAlertMessage(cropIt.errorMessage);		
+		return false;
 	}
 };
 
