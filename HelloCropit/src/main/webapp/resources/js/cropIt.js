@@ -363,7 +363,7 @@ cropIt.sendPicture = function(someName, someFile, someFileName) {
 				}, 4000);
 		 	 }).fail(function() {
 				cropIt.errorMessage = "Your profile picture failed to be updated!";
-				cropIt.showAlertMessage(cropIt.errorMessage + " - postMessage: " + postMessage + " - postStatus: " + postStatus);
+				cropIt.showAlertMessage(cropIt.errorMessage);
 		 	 });
 	}
 	catch(error) {
