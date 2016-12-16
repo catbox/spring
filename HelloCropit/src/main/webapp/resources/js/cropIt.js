@@ -40,6 +40,11 @@ cropIt.setUp = function(array) {
 	    return;
 	}
 	
+	// Load FileAPI.js
+	$.getScript("/HelloCropit/resources/js/FileAPI.js", function() {
+		// Do nothing.
+	});
+	
 	// Load exif.js
 	$.getScript("/HelloCropit/resources/js/ExifReader.js", function() {
 		// Do nothing.
@@ -216,6 +221,21 @@ cropIt.getEXIFData = function(event) {
 			$("#cropitTracker").append("<b>Initial Picture Orientation: </b>" + cropIt.initialPictureOrientation + "<br>");
 		  	$("#cropitTracker").append("<b>Initial Picture Rotation: </b>" + cropIt.initialPictureRotation + "<br>");
 	    }
+	    
+	    // Corrected rotation.
+        switch(cropIt.initialPictureRotation) {     	
+        	case 90:
+        		cropIt.pictureRotation = 270;
+            	break;
+            case 180:
+            	cropIt.pictureRotation = 180;
+            	break;
+            case 270:
+            	cropIt.pictureRotation = 90;
+            	break;
+            default:
+            	cropIt.pictureRotation = 0;
+		}
     };
     // Get only the EXIF information.
     reader.readAsArrayBuffer(files[0].slice(0, 128*1024));
@@ -228,16 +248,41 @@ cropIt.setMessage = function(closeAlertMsg, alertMsg, array) {
 
 // Save the picture.
 cropIt.savePicture = function(imgData) {
-	$("#cropitimage").attr("src", imgData);
-	// Convert the htmlElement to a blob url.
-	var croppedBlob = cropIt.dataURItoBlob(imgData);
-	// Convert the blob to a file.
-	var inputFile = cropIt.loadedFile;
-	var croppedFile = cropIt.blobToFile(croppedBlob, inputFile.name);
-	// Get the name attribute.
-	var name = "file";
-	// Send the picture.
-	cropIt.sendPicture(name, croppedFile, inputFile.name);
+	//if(cropIt.iOSDevice()) {
+	if(true) {
+		
+		// Convert the htmlElement to a blob url.
+		var croppedBlob = cropIt.dataURItoBlob(imgData);
+		// Convert the blob to a file.
+		var inputFile = cropIt.loadedFile;
+		var inputFileName = inputFile.name;
+		var croppedFile = cropIt.blobToFile(croppedBlob, inputFileName);
+		var rotation = cropIt.pictureRotation;
+		
+		FileAPI.Image(imgData).resize(300, 300).get(function(error, resizedCanvas) {
+			console.log("Resized Element: " + resizedCanvas);
+			var imageData = cropIt.convertCanvasToImage(resizedCanvas);
+			console.log("imageData: " + imageData);
+			$("#cropitimage").attr("src", imageData.src);
+		});
+		// Get the name attribute.
+		//var name = "file";
+		// Send the picture.
+		//cropIt.sendPicture(name, croppedFile, inputFileName);
+	}
+	else {
+		$("#cropitimage").attr("src", imgData);
+		// Convert the htmlElement to a blob url.
+		var croppedBlob = cropIt.dataURItoBlob(imgData);
+		// Convert the blob to a file.
+		var inputFile = cropIt.loadedFile;
+		var inputFileName = inputFile.name;
+		var croppedFile = cropIt.blobToFile(croppedBlob, inputFileName);
+		// Get the name attribute.
+		var name = "file";
+		// Send the picture.
+		cropIt.sendPicture(name, croppedFile, inputFileName);
+	}	
 };
 
 // Convert a dataURL to a blob object.
@@ -355,3 +400,20 @@ cropIt.showAlertMessage = function(msg) {
 	$("#cropit-alert-msg").html(msg);
 	$("#cropit-alert").show();
 };
+
+// Converts image to canvas and rotate it.
+cropIt.convertImageToCanvas = function(image) {
+	var canvas = document.createElement("canvas");
+	canvas.width = image.width;
+	canvas.height = image.height;
+	var context = canvas.getContext("2d");
+	context.drawImage(image, 0, 0);
+	return canvas;
+};
+
+// Converts canvas to an image
+cropIt.convertCanvasToImage = function(canvas) {
+	var image = new Image();
+	image.src = canvas.toDataURL("image/jpeg", 1.0);
+	return image;
+}
