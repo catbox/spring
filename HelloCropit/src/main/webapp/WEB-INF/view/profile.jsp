@@ -11,6 +11,7 @@
     <title>Profile</title>
     <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="resources/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="resources/css/profile.css" rel="stylesheet" type="text/css">
     <!-- BrowserSync target script: IP Address should the one of the development machine -->
     <!-- <script src="http://XXX.XXX.XXX.XXX:8080/target/target-script-min.js#browsersync"></script> -->
 </head>
@@ -24,7 +25,7 @@
 
 <body>
 <!-- Profile Page -->
-<div id="profile-content" class="container">
+<div id="profile-content" class="container no-copy">
     <!-- Preview new profile image -->
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
