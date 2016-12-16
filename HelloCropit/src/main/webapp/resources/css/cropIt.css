@@ -10,6 +10,10 @@ html, body {
     border-radius:0px !important;
 }
 
+.alert {
+  	border-radius:0px !important;
+}
+
 .cropit-preview {
   	background-color:#F0F0F0;
   	background-size:cover;
