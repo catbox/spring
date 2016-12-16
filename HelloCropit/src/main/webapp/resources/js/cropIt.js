@@ -225,13 +225,13 @@ cropIt.getEXIFData = function(event) {
 	    // Corrected rotation.
         switch(cropIt.initialPictureRotation) {     	
         	case 90:
-        		cropIt.pictureRotation = 270;
+        		cropIt.pictureRotation = 90;
             	break;
             case 180:
             	cropIt.pictureRotation = 180;
             	break;
             case 270:
-            	cropIt.pictureRotation = 90;
+            	cropIt.pictureRotation = 270;
             	break;
             default:
             	cropIt.pictureRotation = 0;
@@ -248,27 +248,23 @@ cropIt.setMessage = function(closeAlertMsg, alertMsg, array) {
 
 // Save the picture.
 cropIt.savePicture = function(imgData) {
-	//if(cropIt.iOSDevice()) {
-	if(true) {
-		
-		// Convert the htmlElement to a blob url.
-		var croppedBlob = cropIt.dataURItoBlob(imgData);
-		// Convert the blob to a file.
-		var inputFile = cropIt.loadedFile;
-		var inputFileName = inputFile.name;
-		var croppedFile = cropIt.blobToFile(croppedBlob, inputFileName);
+	if(cropIt.iOSDevice()) {
 		var rotation = cropIt.pictureRotation;
 		
-		FileAPI.Image(imgData).resize(300, 300).get(function(error, resizedCanvas) {
-			console.log("Resized Element: " + resizedCanvas);
-			var imageData = cropIt.convertCanvasToImage(resizedCanvas);
-			console.log("imageData: " + imageData);
+		FileAPI.Image(imgData).rotate(rotation).get(function(error, rotatedCanvas) {
+			var imageData = cropIt.convertCanvasToImage(rotatedCanvas);
 			$("#cropitimage").attr("src", imageData.src);
-		});
-		// Get the name attribute.
-		//var name = "file";
-		// Send the picture.
-		//cropIt.sendPicture(name, croppedFile, inputFileName);
+			// Convert the htmlElement to a blob url.
+			var croppedBlob = cropIt.dataURItoBlob(imageData.src);
+			// Convert the blob to a file.
+			var inputFile = cropIt.loadedFile;
+			var inputFileName = inputFile.name;
+			var croppedFile = cropIt.blobToFile(croppedBlob, inputFileName);
+			// Get the name attribute.
+			var name = "file";
+			// Send the picture.
+			cropIt.sendPicture(name, croppedFile, inputFileName);
+		});	
 	}
 	else {
 		$("#cropitimage").attr("src", imgData);
