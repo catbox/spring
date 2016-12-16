@@ -1518,7 +1518,7 @@ pictureEditor.saveProfilePicture = function() {
 							pictureEditor.manualPictureRotation = false;
 							
 							// Send the picture.
-		            		//pictureEditor.sendPicture(name, croppedFile, inputFile.name);
+		            		pictureEditor.sendPicture(name, croppedFile, inputFile.name);
 						}
 						catch(error) {
 							$(pictureEditor.modal).modal('hide');
