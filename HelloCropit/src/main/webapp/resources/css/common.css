@@ -15,14 +15,14 @@ html, body {
 }
 
 .no-copy {
-  	-webkit-user-select: none;  /* Chrome all / Safari all */
-  	-moz-user-select: none;     /* Firefox all */
-  	-ms-user-select: none;      /* IE 10+ */
-  	user-select: none;          /* Likely future */     
+  	-webkit-user-select:none;  /* Chrome all / Safari all */
+  	-moz-user-select:none;     /* Firefox all */
+  	-ms-user-select:none;      /* IE 10+ */
+  	user-select:none;          /* Likely future */     
 }
 
 .modal-content  {
-    -webkit-border-radius: 0px !important;
-    -moz-border-radius: 0px !important;
-    border-radius: 0px !important; 
+    -webkit-border-radius:0px !important;
+    -moz-border-radius:0px !important;
+    border-radius:0px !important; 
 }
