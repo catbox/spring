@@ -248,6 +248,7 @@ cropIt.setMessage = function(closeAlertMsg, alertMsg, array) {
 
 // Save the picture.
 cropIt.savePicture = function(imgData) {
+	$("#cropit-modal").modal('show');
 	if(cropIt.iOSDevice()) {
 		var rotation = cropIt.pictureRotation;
 		
