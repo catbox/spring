@@ -95,16 +95,18 @@
                     <h4 id="cropit-modal-label" class="modal-title">Profile Picture</h4>                 
                 </div>
                 <div class="modal-body">
-                    <div class="row">
+                	<div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
-                           <h4>Your profile picture is being updated.</h4>                           
-                           <img id="cropit-modal-spinner" src="resources/images/wh-spinner.gif" alt="spinner">
+                           <h4>Your profile picture is being updated.</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-offset-4 col-xs-8 col-sm-offset-4 col-sm-8 col-md-offset-4 col-md-8 col-lg-offset-4 col-lg-8">                          
+                           <i class="fa fa-circle-o-notch fa-spin fa-4x fa-fw" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <img src="resources/images/wh-morse-logo.png" alt="logo">    
-                </div>
+                <div class="modal-footer"></div>
             </div>
         </div>
     </div>
