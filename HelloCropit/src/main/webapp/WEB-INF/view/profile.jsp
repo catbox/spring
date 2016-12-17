@@ -48,7 +48,12 @@
 <script src="resources/js/Profile.js"></script>
 <script type="text/javascript">
     // Function to execute as soon as  the DOM is fully loaded.
-    $(document).ready(function() {
+    $(document).ready(function() {   	
+    	// Prevent caching
+		$.ajaxSetup({
+			cache:false
+		});
+    	
     	profile.setUp();
     });
 </script>
