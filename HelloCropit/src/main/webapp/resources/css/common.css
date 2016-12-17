@@ -21,7 +21,7 @@ html, body {
   	user-select:none;          /* Likely future */     
 }
 
-.modal-content  {
+.modal-content {
     -webkit-border-radius:0px !important;
     -moz-border-radius:0px !important;
     border-radius:0px !important; 
