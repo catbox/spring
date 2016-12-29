@@ -92,12 +92,12 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">      
-                    <h4 id="cropit-modal-label" class="modal-title">Profile Picture</h4>                 
+                    <h4 id="cropit-modal-label" class="modal-title"><spring:message code="cropit.profile.picture"/></h4>                 
                 </div>
                 <div class="modal-body">
                 	<div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
-                           <h4>Your profile picture is being updated.</h4>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                           <h4><spring:message code="cropit.profile.picture.update"/></h4>
                         </div>
                     </div>
                     <div class="row">
@@ -128,6 +128,7 @@
     	messageArray[3] = '<spring:message code="cropit.file.too.large"/>';    	
     	messageArray[4] = '<spring:message code="cropit.undefined.platform"/>';
     	messageArray[5] = '<spring:message code="cropit.file.reader.support"/>';
+    	messageArray[6] = '<spring:message code="cropit.profile.picture.cancellation"/>';
     	
     	cropIt.setUp(messageArray);
     });

@@ -119,7 +119,7 @@ cropIt.eventsHandler = function(array) {
 		}).done(function(data) {
 			window.location.href = cropIt.locationOrigin + "/HelloCropit/";
 		}).fail(function() {
-			cropIt.errorMessage = "Your profile picture cancellation has failed!";
+			cropIt.errorMessage = array[6];
 			cropIt.showAlertMessage(cropIt.errorMessage);
 		}).always(function() {
 			// Do nothing.
@@ -135,8 +135,6 @@ cropIt.eventsHandler = function(array) {
     		$("#cropit-alert").show();
     	}
     	else {
-    		// window.open(imageData);
-    		
     		// Save the picture.
     		cropIt.savePicture(imageData);
     	}   		
