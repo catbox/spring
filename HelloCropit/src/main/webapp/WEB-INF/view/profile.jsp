@@ -14,6 +14,13 @@
     <link href="resources/css/profile.css" rel="stylesheet" type="text/css">
     <!-- BrowserSync target script: IP Address should the one of the development machine -->
     <!-- <script src="http://XXX.XXX.XXX.XXX:8080/target/target-script-min.js#browsersync"></script> -->
+    <script type="text/javascript">    
+	 	// Prevent caching
+		$.ajaxSetup({
+			cache:false
+		});
+
+	</script>
 </head>
 
 <%
@@ -45,17 +52,13 @@
 <!-- JavaScript -->
 <script src="resources/js/jquery-1.11.2.min.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
-<script src="resources/js/Profile.js"></script>
+<script src="resources/js/Profile.js"></script> 
 <script type="text/javascript">
     // Function to execute as soon as  the DOM is fully loaded.
     $(document).ready(function() {   	
-    	// Prevent caching
-		$.ajaxSetup({
-			cache:false
-		});
-    	
     	profile.setUp();
     });
 </script>
+
 </body>
 </html>
