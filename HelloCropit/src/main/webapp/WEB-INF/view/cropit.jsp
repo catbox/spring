@@ -103,7 +103,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-offset-4 col-xs-8 col-sm-offset-4 col-sm-8 col-md-offset-4 col-md-8 col-lg-offset-4 col-lg-8">                          
+                        <div class="col-xs-offset-4 col-xs-8 col-sm-offset-5 col-sm-7 col-md-offset-5 col-md-7 col-lg-offset-5 col-lg-7">                          
                            <i class="fa fa-circle-o-notch fa-spin fa-4x fa-fw" aria-hidden="true"></i>
                         </div>
                     </div>
