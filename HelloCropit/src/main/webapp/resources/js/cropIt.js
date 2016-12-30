@@ -252,7 +252,7 @@ cropIt.savePicture = function(imgData) {
 		
 		FileAPI.Image(imgData).rotate(rotation).get(function(error, rotatedCanvas) {
 			var imageData = cropIt.convertCanvasToImage(rotatedCanvas);
-			$("#cropitimage").attr("src", imageData.src);
+			//$("#cropitimage").attr("src", imageData.src);
 			// Convert the htmlElement to a blob url.
 			var croppedBlob = cropIt.dataURItoBlob(imageData.src);
 			// Convert the blob to a file.
