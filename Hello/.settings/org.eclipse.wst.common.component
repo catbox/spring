@@ -4,6 +4,9 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <dependent-module archiveName="hello-database-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/HelloDatabase/HelloDatabase">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/Hello/target/classes"/>
         <property name="context-root" value="Hello"/>
     </wb-module>
