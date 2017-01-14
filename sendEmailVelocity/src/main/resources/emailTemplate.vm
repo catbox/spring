@@ -1,5 +1,7 @@
-Dear ${firstName} ${lastName}
- 
-Sending Email Using Spring Smtp Email + Velocity Template from ${location} location.
-
-Thanks
+Email sent with Spring and Velocity Template
+        
+Dear ${firstName} ${lastName}, your next mission is in ${location}
+        
+Good Luck
+        
+M
