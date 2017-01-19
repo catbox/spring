@@ -1,21 +1,29 @@
 package com.spring.sendemail;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.StringWriter;
+//import java.util.HashMap;
+//import java.util.Map;
+
 
 
 //import javax.mail.Message;
-import javax.mail.internet.InternetAddress;
+//import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.velocity.Template;
+import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
-import org.springframework.ui.velocity.VelocityEngineUtils;
+//import org.springframework.ui.velocity.VelocityEngineUtils;
+
+
+import com.spring.sendemail.model.Receiver;
+import com.spring.sendemail.model.Sender;
  
-@SuppressWarnings("deprecation")
+//@SuppressWarnings("deprecation")
 public class EmailSender {
  
     @Autowired
@@ -32,18 +40,28 @@ public class EmailSender {
         this.velocityEngine = velocityEngine;
     }
   
-    public void sendEmail(final String subject, final String message, final String emailAddress) {
+    public void sendEmail(final Sender sender, final Receiver receiver) {
         	MimeMessagePreparator preparator = new MimeMessagePreparator() {
-            public void prepare(MimeMessage mimeMessage) throws Exception {
-                MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
-                message.setTo(emailAddress);
-                message.setFrom(new InternetAddress("cocolekat@gmail.com"));
-                User user = new User("Schwarze Katze", "derschwarzekatze@gmail.com");
-                Map<String, Object> userModel = new HashMap<String, Object>();
-                userModel.put("user", user);
-				String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine,"emailTemplate2.vm", userModel);
-                message.setSubject(subject);
-                message.setText(text, true);
+            public void prepare(MimeMessage mimeMessage) throws Exception {               
+
+				Template template = velocityEngine.getTemplate("emailTemplate.vm");
+
+				VelocityContext velocityContext = new VelocityContext();
+				velocityContext.put("firstName", receiver.getFirstName());
+				velocityContext.put("lastName", receiver.getLastName());
+				velocityContext.put("emailAddress", receiver.getEmailAddress());
+				  
+				StringWriter stringWriter = new StringWriter();
+				  
+				template.merge(velocityContext, stringWriter);
+				  
+				String messageContent = stringWriter.toString();
+				
+				MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
+	            message.setTo(sender.getEmailAddressDestination());
+	            message.setFrom(sender.getEmailAddress());
+                message.setSubject(sender.getEmailSubject());
+                message.setText(messageContent, true);
             }
         };
         try {
@@ -53,7 +71,5 @@ public class EmailSender {
         catch(Exception ex) {
             System.err.println("ERROR: " + ex.getMessage());
         }
-    }
-    
-    
+    }  
 }
