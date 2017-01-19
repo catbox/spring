@@ -1,7 +1,12 @@
-Email sent with Spring and Velocity Template
+<html>
+	<body>
+
+		<h3>Email sent with Spring and Velocity Template</h3>
         
-Dear ${firstName} ${lastName}, your next mission is in ${location}
+		<p>Dear ${firstName} ${lastName}, your next mission is in ${location}</p>
         
-Good Luck
+		<p>Good Luck</p>
         
-M
+		<p>M</p>
+	</body>
+</html>

@@ -23,10 +23,17 @@
     </property>
 </bean>
 
-<bean id="mailer" class="com.spring.sendemail.Mailer">
+<!-- <bean id="mailer" class="com.spring.sendemail.Mailer">
   <property name="mailSender" ref="mailSender"/>
   <property name="velocityEngine" ref="velocityEngine"/>
 </bean>
+ -->
+ 
+<bean id="mailer" class="com.spring.sendemail.EmailSender">
+  <property name="mailSender" ref="mailSender"/>
+  <property name="velocityEngine" ref="velocityEngine"/>
+</bean>
+
 
 <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
     <property name="velocityProperties">
