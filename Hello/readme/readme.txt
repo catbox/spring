@@ -24,7 +24,6 @@ Project Creation:
 
    <properties>  
        <spring.version>the-spring-release</spring.version>  
-       <jdk.version>some-jdk-version</jdk.version>
    </properties>
    
    <dependencies>
