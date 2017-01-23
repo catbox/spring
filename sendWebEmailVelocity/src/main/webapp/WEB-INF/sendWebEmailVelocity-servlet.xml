@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"	   
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"		    		  	   
+  	   xmlns:context="http://www.springframework.org/schema/context" 	   
+  	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 	   
+  	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+  	   					   http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+     				       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<!-- The tag context:component-scan means that the annotated components like Controller, Service 
+    	 are to be scanned automatically by Spring container starting from the given package.
+    	 In this case here, it is the entry point for the Controller. 
+    -->
+	<context:component-scan base-package="com.sendwebemailvelocity.*"/>
+	
+	<!-- This tag registers a RequestMappingHandlerMapping, a RequestMappingHandlerAdapter, and an ExceptionHandlerExceptionResolver among others
+		 in support of processing requests with annotated controller methods using annotations such as @RequestMapping, @ExceptionHandler, 
+		 @Valid (if JSR-303 Provider is present on the classpath)
+    -->
+    <mvc:annotation-driven/>
+
+	<!-- Location of the pages -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    
+    <!-- Define mapping for resources such as css, fonts, icons & js -->
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+    
+    <!-- Location of messages used for internationalization -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="classpath:messages"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+    
+    <!-- By default the "localeResolver" is mapped to the class "org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver" which resolves the locale 
+         by checking the accept-language header in the HTTP request.
+    	 
+    	 In this case "localeResolver" is mapped to the class class="org.springframework.web.servlet.i18n.CookieLocaleResolver" whereby
+    	 the cookie can be defined and set an expiry time in seconds
+    	 
+    	 Alternatively the "localeResolver" can be mapped to the class "org.springframework.web.servlet.i18n.SessionLocaleResolver". In this case any
+    	 language selected by the used is discarded when the session is closed.
+    -->
+    <!--
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="defaultLocale" value="en"/>
+        <property name="cookieName" value="sendWebEmailVelocityCookie"></property>
+        <property name="cookieMaxAge" value="31536000"></property>
+    </bean>
+    -->
+    
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="en"/>
+	</bean>
+ 	 
+ 	<!-- The interceptor captures requests before or after the controller or just before the response is sent to the view -->	
+    <mvc:interceptors>
+        <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="language"/>
+        </bean>
+    </mvc:interceptors>
+    
+</beans>
