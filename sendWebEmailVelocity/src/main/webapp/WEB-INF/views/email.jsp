@@ -24,6 +24,9 @@
 				<div class="row">
 					<p><a href="?language=en"><spring:message code="label.english"/></a> <a href="?language=fr"><spring:message code="label.french"/></a></p>
 			    	<h1><spring:message code="label.titleHeader"/></h1>
+			    	
+			    	<!-- Display Errors from Client Validation -->
+					<div id="email-form-validation-errors"><ul><!-- errors --></ul></div>
 			        
 			        <div class="row">
 						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
@@ -64,6 +67,25 @@
 			</form>
 		</div>
 	</div>
-</div>	   
+</div>
+
+<!-- JavaScript -->
+<script src="resources/js/jquery-1.11.2.min.js"></script>
+<script src="resources/js/bootstrap.min.js"></script>
+<script src="resources/js/jquery.validate.min.js"></script>
+<script src="resources/js/jquery.form.js"></script>
+<script src="resources/js/email.js"></script>
+<script type="text/javascript">
+	// Function to execute as soon as  the DOM is fully loaded.
+	$(document).ready(function() {
+		var LoginMessageArray = new Array();
+		EmailMessageArray[0] = '<spring:message code="email.firstName.notEmpty"/>';
+		EmailMessageArray[1] = '<spring:message code="email.lastName.notEmpty"/>';
+		EmailMessageArray[2] = '<spring:message code="email.notEmpty.emailAddress"/>';
+		EmailMessageArray[3] = '<spring:message code="email.format.emailAddress"/>';
+		emailObj.Initialize(EmailMessageArray);
+	});
+</script>
+	   
 </body>
 </html>
