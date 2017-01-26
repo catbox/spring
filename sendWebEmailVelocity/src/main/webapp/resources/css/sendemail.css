@@ -1,0 +1,57 @@
+@import url("common.css");
+
+/* Email Form validation */
+
+#field, #emailForm label {
+	font-family:"lucida grande",tahoma,verdana,arial,sans-serif !important;
+	font-size:small !important;
+}
+
+#emailForm input.error, select.error { 
+	border:1px solid red !important;
+}
+
+#email-form-validation-errors {
+	position:relative;
+	background-color:#FFEBE8;
+    border:1px solid #DD3C10;
+    color:red;
+    padding:10px;
+    margin-bottom:10px;
+    font-family:"lucida grande",tahoma,verdana,arial,sans-serif !important;
+    font-size:14px;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    text-align:left;
+    clear:both;
+}
+
+#email-form-validation-errors {
+	display:none;
+}
+
+#email-form-validation-errors label.error  {
+	display:block !important;
+	margin-left:1%;
+	width:auto;
+	float:none;
+	font-weight:normal;
+	color:red !important;
+    font-style:normal;
+}
+
+#email-form-validation-server-errors {
+	background-color:#FFEBE8;
+	border:1px solid #DD3C10;
+	color:red;
+	padding:10px;
+	margin-bottom:10px;
+	font-family:"lucida grande",tahoma,verdana,arial,sans-serif !important;
+    font-size:14px;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    text-align:center;
+    clear:both;
+}

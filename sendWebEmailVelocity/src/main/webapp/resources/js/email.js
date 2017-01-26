@@ -1,33 +1,48 @@
 var emailObj = {
 		
+		SetUp:function(array) {
+			this.EventsHandler();
+			this.EmailAddressValidation();
+			this.SendEmailValidation(array);
+			this.sendEmail();
+			
+		},
+		
 		// Events Handling
 		EventsHandler:function() {
+			//emailObj.ClearFrontEndErrorMessage();// Clear front-end error message
+			$("#cancel-email").click(function() {
+				$("#email-form-validation-errors").css('display', 'none');
+				$("#firstName").removeClass("error");
+				$("#lastName").removeClass("error");
+				$("#emailAddress").removeClass("error");
+			});
+			
+			emailObj.ClearBackEndErrorMessage();
+		},
+
+		// Clear back-end error message
+		ClearBackEndErrorMessage:function() {
 			// First Name field focus
 			$("#firstName").focus(function() {
-				if($("#login-form-validation-server-errors").length > 0) {
-					LoginFormObj.ClearBackEndErrorMessage();
+				if($("#email-form-validation-server-errors").length > 0) {
+					$("#email-form-validation-server-errors").remove();
 				}				
 			});
 			
 			// Last Name field focus
 			$("#lastName").focus(function() {
-				if($("#login-form-validation-server-errors").length > 0) {
-					LoginFormObj.ClearBackEndErrorMessage();
+				if($("#email-form-validation-server-errors").length > 0) {
+					$("#email-form-validation-server-errors").remove();
 				}				
 			});
 			
 			// Email address field focus
 			$("#emailAddress").focus(function() {
-				if($("#login-form-validation-server-errors").length > 0) {
-					LoginFormObj.ClearBackEndErrorMessage();
+				if($("#email-form-validation-server-errors").length > 0) {
+					$("#email-form-validation-server-errors").remove();
 				}				
 			});
-			
-		},
-		
-		// Clear back-end Error message
-		ClearBackEndErrorMessage:function() {
-			$("#login-form-validation-server-errors").remove();
 		},
 		
 		// Email Address validation
@@ -52,10 +67,10 @@ var emailObj = {
 		},
 		
 		// Send email form validation rules
-		LoginValidation:function(array) {
-			$("#loginForm").validate({
-				errorContainer:$('#login-form-validation-errors'),
-				errorLabelContainer:$('ul', '#login-form-validation-errors'),
+		SendEmailValidation:function(array) {
+			$("#emailForm").validate({
+				errorContainer:$('#email-form-validation-errors'),
+				errorLabelContainer:$('ul', '#email-form-validation-errors'),
 				wrapper:'li',
 				rules: {
 					firstName: {

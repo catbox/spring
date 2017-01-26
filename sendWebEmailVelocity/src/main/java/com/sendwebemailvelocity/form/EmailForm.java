@@ -67,7 +67,7 @@ public class EmailForm {
 	
 	@Override
     public String toString() {
-        return "LoginForm [firstName=" + firstName + " lastName=" + lastName + "emailAddress=" + emailAddress + "]";
+        return "emailForm [firstName=" + firstName + " lastName=" + lastName + " emailAddress=" + emailAddress + "]";
 	}
 
 }

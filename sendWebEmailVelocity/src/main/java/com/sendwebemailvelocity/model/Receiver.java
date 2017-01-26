@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import com.google.common.base.Strings;
 
-public class Receiver implements Serializable{
+public class Receiver implements Serializable {
 	
 	/** Serial Version */
     private static final long serialVersionUID = 1L;

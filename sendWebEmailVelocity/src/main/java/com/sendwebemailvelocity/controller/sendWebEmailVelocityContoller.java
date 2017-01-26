@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sendwebemailvelocity.constants.ValidationConstants;
 import com.sendwebemailvelocity.form.EmailForm;
 import com.sendwebemailvelocity.form.converter.EmailFormConverter;
+
 
 @Controller("sendWebEmailVelocityContoller")
 @SessionAttributes("emailForm")
@@ -40,10 +42,19 @@ public class sendWebEmailVelocityContoller {
 		
 		// Verify for errors that could have happened during the binding
 		if(result.hasErrors()) {
-	    	return new ModelAndView("email");
+			
+			int errorCount = result.getErrorCount();
+			
+			if(errorCount > 0) {
+				String numberOfErrors = String.valueOf(errorCount);			
+				model.addAttribute(ValidationConstants.FIELD_ERRORS, numberOfErrors);		
+			}
+			// Stay at the send email form
+			return new ModelAndView("email", model);
 	    }
-		// Stay at the login form
-		return new ModelAndView("email");		
+		else {		
+			// Stay at the send email form
+			return new ModelAndView("email", model);	
+		}			
 	}
-
 }
