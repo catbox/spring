@@ -43,7 +43,7 @@
 							<!-- Display Errors from Server Form Validation -->				
 							<c:if test="${fieldErrors > 0}">
 								<div id="email-form-validation-server-errors">
-									<p><spring:message code="backend.invalidData"/></p>
+									<p><spring:message code="email.backend.invalidData"/></p>
 								</div>
 							</c:if>
 			        	</div>
