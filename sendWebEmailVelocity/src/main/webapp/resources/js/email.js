@@ -102,7 +102,7 @@ var emailObj = {
 					}
 				},
 				messages: {	
-					fistName: {
+					firstName: {
 						required:array[0]
 					},
 					lastName: {
