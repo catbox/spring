@@ -20,7 +20,7 @@ var emailObj = {
 				}
 				
 				// Clear back-end error message
-				if($("#email-form-validation-server-errors").length > 0) {
+				if($("#email-form-validation-server-errors").length >= 0) {
 					$("#email-form-validation-server-errors").css('display', 'none');
 					$.ajax({type:"GET", url:"/sendWebEmailVelocity"
 					}).done(function(data) {
