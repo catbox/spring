@@ -27,6 +27,12 @@ public class EmailForm {
 		lastName = null;
 		emailAddress = null;
 	}
+	
+	public EmailForm(String firstName, String lastName, String emailAddress) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.emailAddress = emailAddress;
+	}
     
 	@JsonProperty
 	public String getFirstName() {
