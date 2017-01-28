@@ -10,39 +10,56 @@ var emailObj = {
 		
 		// Events Handling
 		EventsHandler:function() {
-			//emailObj.ClearFrontEndErrorMessage();// Clear front-end error message
+			// Clear front-end error message
 			$("#cancel-email").click(function() {
-				$("#email-form-validation-errors").css('display', 'none');
-				$("#firstName").removeClass("error");
-				$("#lastName").removeClass("error");
-				$("#emailAddress").removeClass("error");
+				if($("#email-form-validation-errors").length > 0) {
+					$("#email-form-validation-errors").css('display', 'none');
+					$("#firstName").removeClass("error");
+					$("#lastName").removeClass("error");
+					$("#emailAddress").removeClass("error");
+				}
+				
+				// Clear back-end error message
+				if($("#email-form-validation-server-errors").length > 0) {
+					$("#email-form-validation-server-errors").css('display', 'none');
+					$.ajax({type:"GET", url:"/sendWebEmailVelocity"
+					}).done(function(data) {
+						window.location.href = window.location.origin + "/sendWebEmailVelocity/";
+					}).fail(function() {
+						var errorMessage = "Cancellation failed";
+						alert(errorMessage)
+					}).always(function() {
+						// Do nothing.
+					});
+				}
+
+			});
+
+			// Clear back-end error message. First Name field focus
+			$("#firstName").focus(function() {
+				if($("#email-form-validation-server-errors").length > 0) {
+					emailObj.ClearBackEndErrorMessage();
+				}				
 			});
 			
-			emailObj.ClearBackEndErrorMessage();
+			// Clear back-end error message. Last Name field focus
+			$("#lastName").focus(function() {
+				if($("#email-form-validation-server-errors").length > 0) {
+					emailObj.ClearBackEndErrorMessage();
+				}				
+			});
+			
+			// Clear back-end error message. Email address field focus
+			$("#emailAddress").focus(function() {
+				if($("#email-form-validation-server-errors").length > 0) {
+					emailObj.ClearBackEndErrorMessage();
+				}				
+			});
 		},
 
 		// Clear back-end error message
 		ClearBackEndErrorMessage:function() {
-			// First Name field focus
-			$("#firstName").focus(function() {
-				if($("#email-form-validation-server-errors").length > 0) {
-					$("#email-form-validation-server-errors").remove();
-				}				
-			});
-			
-			// Last Name field focus
-			$("#lastName").focus(function() {
-				if($("#email-form-validation-server-errors").length > 0) {
-					$("#email-form-validation-server-errors").remove();
-				}				
-			});
-			
-			// Email address field focus
-			$("#emailAddress").focus(function() {
-				if($("#email-form-validation-server-errors").length > 0) {
-					$("#email-form-validation-server-errors").remove();
-				}				
-			});
+			$("#email-form-validation-server-errors").css('display', 'none');;
 		},
 		
 		// Email Address validation
