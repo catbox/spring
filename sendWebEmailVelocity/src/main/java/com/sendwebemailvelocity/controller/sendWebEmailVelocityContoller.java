@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sendwebemailvelocity.constants.Constants;
 import com.sendwebemailvelocity.constants.ValidationConstants;
 import com.sendwebemailvelocity.form.EmailForm;
 import com.sendwebemailvelocity.form.converter.EmailFormConverter;
-
 
 @Controller("sendWebEmailVelocityContoller")
 @SessionAttributes("emailForm")
@@ -29,20 +29,18 @@ public class sendWebEmailVelocityContoller {
 		return new EmailForm();
 	}
 	
-	/** Load the login page **/
+	/** Load the email page **/
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-    public String loadEmailPage() {
-		// Go to the login page
-		return "email";
+    public ModelAndView loadEmailPage() {		
+		EmailForm emailForm = new EmailForm(Constants.EMPTY_STRING, Constants.EMPTY_STRING, Constants.EMPTY_STRING);
+		return new ModelAndView("email", "emailForm", emailForm);
     }
 	
 	/** Send Web Email Velocity controller **/
 	@RequestMapping(value = "/sendEmail", method = RequestMethod.POST)
-	public ModelAndView login(@Valid @ModelAttribute("emailForm") EmailForm loginForm, BindingResult result, ModelMap model) {
-		
+	public ModelAndView sendEmail(@Valid @ModelAttribute("emailForm") EmailForm loginForm, BindingResult result, ModelMap model) {
 		// Verify for errors that could have happened during the binding
 		if(result.hasErrors()) {
-			
 			int errorCount = result.getErrorCount();
 			
 			if(errorCount > 0) {
@@ -52,9 +50,10 @@ public class sendWebEmailVelocityContoller {
 			// Stay at the send email form
 			return new ModelAndView("email", model);
 	    }
-		else {		
+		else {
 			// Stay at the send email form
 			return new ModelAndView("email", model);	
 		}			
 	}
+
 }
