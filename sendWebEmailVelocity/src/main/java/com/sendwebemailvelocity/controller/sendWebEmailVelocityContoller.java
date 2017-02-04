@@ -16,6 +16,8 @@ import com.sendwebemailvelocity.constants.Constants;
 import com.sendwebemailvelocity.constants.ValidationConstants;
 import com.sendwebemailvelocity.form.EmailForm;
 import com.sendwebemailvelocity.form.converter.EmailFormConverter;
+import com.sendwebemailvelocity.service.SendEmail;
+import com.sendwebemailvelocity.validation.ValidationMessages;
 
 @Controller("sendWebEmailVelocityContoller")
 @SessionAttributes("emailForm")
@@ -23,6 +25,9 @@ public class sendWebEmailVelocityContoller {
 	
 	@Autowired
 	EmailFormConverter emailFormConverter;
+	
+	@Autowired
+	SendEmail sendEmail;
 	
 	@ModelAttribute("emailForm")
 	public EmailForm getEmailForm() {
@@ -51,6 +56,16 @@ public class sendWebEmailVelocityContoller {
 			return new ModelAndView("email", model);
 	    }
 		else {
+			
+			boolean emailSent = sendEmail.mailSender();
+			
+			if(emailSent) {
+				model.addAttribute(ValidationConstants.EMAIL_SENT, ValidationMessages.EMAIL_SENT_SUCCESS);
+			}
+			else {
+				model.addAttribute(ValidationConstants.EMAIL_SENT, ValidationMessages.EMAIL_SENT_FAILED);
+			}
+			
 			// Stay at the send email form
 			return new ModelAndView("email", model);	
 		}			
