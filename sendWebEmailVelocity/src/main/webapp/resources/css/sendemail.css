@@ -8,14 +8,14 @@
 }
 
 #emailForm input.error, select.error { 
-	border:1px solid red !important;
+	border:1px solid #FF0000 !important;
 }
 
 #email-form-validation-errors {
 	position:relative;
 	background-color:#FFEBE8;
-    border:1px solid #DD3C10;
-    color:red;
+    border:1px solid #FF0000;
+    color:#FF0000;
     padding:10px;
     margin-bottom:10px;
     font-family:"lucida grande",tahoma,verdana,arial,sans-serif !important;
@@ -37,14 +37,14 @@
 	width:auto;
 	float:none;
 	font-weight:normal;
-	color:red !important;
+	color:#FF0000 !important;
     font-style:normal;
 }
 
 #email-form-validation-server-errors {
 	background-color:#FFEBE8;
-	border:1px solid #DD3C10;
-	color:red;
+	border:1px solid #FF0000;
+	color:#FF0000;
 	padding:10px;
 	margin-bottom:10px;
 	font-family:"lucida grande",tahoma,verdana,arial,sans-serif !important;
