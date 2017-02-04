@@ -46,6 +46,24 @@
 									<p><spring:message code="email.backend.invalidData"/></p>
 								</div>
 							</c:if>
+							
+							<!-- Display the result of sending the email -->							
+							<c:choose>
+							    <c:when test="${emailSent == 'EMAIL_SENT_SUCCESS'}">
+							    	<div class="alert alert-success">
+										<p>Your invitation was successfully sent.</p>
+									</div>
+							    </c:when>
+							    
+							    <c:when test="${emailSent == 'EMAIL_SENT_FAILED'}">
+							    	<div class="alert alert-danger">
+										<p>Your invitation failed to be sent.</p>
+									</div>
+							    </c:when>
+							    
+							</c:choose>
+							
+							
 			        	</div>
 			        </div>			        
 			        <br>
