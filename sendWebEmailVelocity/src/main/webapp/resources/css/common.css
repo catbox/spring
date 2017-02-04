@@ -19,6 +19,18 @@ html, body {
   	border-radius:0px !important;
 }
 
+.alert-success {
+  color: #008000 !important;
+  background-color: #DFF0D8 !important;
+  border-color: #008000 !important;
+}
+
+.alert-danger {
+  color: #FF0000 !important;
+  background-color: #FFEBE8 !important;
+  border-color: #FF0000 !important;
+}
+
 .no-copy {
   	-webkit-user-select:none;  /* Chrome all / Safari all */
   	-moz-user-select:none;     /* Firefox all */
