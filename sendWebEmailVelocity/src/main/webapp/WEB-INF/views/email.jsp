@@ -99,13 +99,13 @@
 						<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
 					        <!-- Send email -->
 					        <div id="send-email">
-					        	<button class="btn btn-lg btn-primary btn-block" type="submit"><spring:message code="label.email.sendemail"/></button>
+					        	<button class="btn btn-primary btn-block" type="submit"><spring:message code="label.email.sendemail"/></button>
 							</div>
 						</div>
 						
 						<div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
 							<div id="cancel-email">
-					        	<button class="btn btn-lg btn-primary btn-block" type="reset"><spring:message code="label.email.cancel"/></button>
+					        	<button class="btn btn-primary btn-block" type="reset"><spring:message code="label.email.cancel"/></button>
 							</div>
 						</div>
 			        </div>
