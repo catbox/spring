@@ -20,22 +20,22 @@ html, body {
 }
 
 .alert-success {
-  color: #008000 !important;
-  background-color: #DFF0D8 !important;
-  border-color: #008000 !important;
+  color:#008000 !important;
+  background-color:#DFF0D8 !important;
+  border-color:#008000 !important;
 }
 
 .alert-danger {
-  color: #FF0000 !important;
-  background-color: #FFEBE8 !important;
-  border-color: #FF0000 !important;
+  color:#FF0000 !important;
+  background-color:#FFEBE8 !important;
+  border-color:#FF0000 !important;
 }
 
 .no-copy {
-  	-webkit-user-select:none;  /* Chrome all / Safari all */
-  	-moz-user-select:none;     /* Firefox all */
+  	-webkit-user-select:none;  /* Chrome and Safari */
+  	-moz-user-select:none;     /* Firefox */
   	-ms-user-select:none;      /* IE 10+ */
-  	user-select:none;          /* Likely future */     
+  	user-select:none;  
 }
 
 .modal-content {
