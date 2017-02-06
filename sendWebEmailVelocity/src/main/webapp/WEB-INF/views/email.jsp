@@ -51,19 +51,16 @@
 							<c:choose>
 							    <c:when test="${emailSent == 'EMAIL_SENT_SUCCESS'}">
 							    	<div class="alert alert-success">
-										<p>Your invitation was successfully sent.</p>
+										<p><spring:message code="email.sent.success"/></p>
 									</div>
 							    </c:when>
 							    
 							    <c:when test="${emailSent == 'EMAIL_SENT_FAILED'}">
 							    	<div class="alert alert-danger">
-										<p>Your invitation failed to be sent.</p>
+										<p><spring:message code="email.sent.failed"/></p>
 									</div>
-							    </c:when>
-							    
+							    </c:when>							    
 							</c:choose>
-							
-							
 			        	</div>
 			        </div>			        
 			        <br>

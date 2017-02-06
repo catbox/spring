@@ -29,6 +29,36 @@
     <!-- Define mapping for resources such as css, fonts, icons & js -->
     <mvc:resources mapping="/resources/**" location="/resources/"/>
     
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	    <property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="cocolekat@gmail.com" />
+		<property name="password" value="Cocolekat$265" />
+		
+		<property name="javaMailProperties">
+		    <props>
+		        <prop key="mail.transport.protocol">smtp</prop>
+		        <prop key="mail.smtp.auth">true</prop>
+		        <prop key="mail.smtp.starttls.enable">true</prop>
+		        <prop key="mail.debug">true</prop>
+		    </props>
+	    </property>
+	</bean>
+ 
+	<bean id="sendMailService" class="com.sendwebemailvelocity.service.SendEmail">
+	  <property name="mailSender" ref="mailSender"/>
+	  <property name="velocityEngine" ref="velocityEngine"/>
+	</bean>
+
+	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+	    <property name="velocityProperties">
+	        <props>
+	            <prop key="resource.loader">class</prop>
+	            <prop key="class.resource.loader.class">org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader</prop>
+	        </props>
+	    </property>
+	</bean>
+    
     <!-- Location of messages used for internationalization -->
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basename" value="classpath:messages"/>
