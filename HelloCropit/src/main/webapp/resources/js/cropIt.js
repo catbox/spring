@@ -357,7 +357,7 @@ cropIt.sendPicture = function(someName, someFile, someFileName) {
 			    url:"/HelloCropit/loadProfilePicture"
 			 }).done(function() {
 				window.setTimeout(function() {
-					$("cropit-modal").modal('hide');
+					$("#cropit-modal").modal('hide');
 					window.location.href = cropIt.locationOrigin + "/HelloCropit/";
 				}, 4000);
 		 	 }).fail(function() {
@@ -366,7 +366,7 @@ cropIt.sendPicture = function(someName, someFile, someFileName) {
 		 	 });
 	}
 	catch(error) {
-		$("cropit-modal").modal('hide');
+		$("#cropit-modal").modal('hide');
 		cropIt.errorMessage = "An internal error prevented your profile picture from being updated!";
 		cropIt.showAlertMessage(cropIt.errorMessage);
 	}
