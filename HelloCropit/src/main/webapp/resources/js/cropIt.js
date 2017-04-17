@@ -352,14 +352,14 @@ cropIt.sendPicture = function(someName, someFile, someFileName) {
 				   successStatus = true;
 				   postStatus = textStatus;
 			    },
-				timeout:9000,
+				timeout:10000,
 				type:"POST",
 			    url:"/HelloCropit/loadProfilePicture"
 			 }).done(function() {
 				window.setTimeout(function() {
 					$("#cropit-modal").modal('hide');
 					window.location.href = cropIt.locationOrigin + "/HelloCropit/";
-				}, 4000);
+				}, 5000);
 		 	 }).fail(function() {
 				cropIt.errorMessage = "Your profile picture failed to be updated!";
 				cropIt.showAlertMessage(cropIt.errorMessage);
