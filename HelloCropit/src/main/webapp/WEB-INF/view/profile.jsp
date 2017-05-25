@@ -11,6 +11,7 @@
     <title>Profile</title>
     <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="resources/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="resources/css/common.css" rel="stylesheet" type="text/css">
     <link href="resources/css/profile.css" rel="stylesheet" type="text/css">
     <!-- BrowserSync target script: IP Address should the one of the development machine -->
     <!-- <script src="http://XXX.XXX.XXX.XXX:8080/target/target-script-min.js#browsersync"></script> -->
@@ -19,7 +20,6 @@
 		$.ajaxSetup({
 			cache:false
 		});
-
 	</script>
 </head>
 
@@ -40,7 +40,7 @@
                 <div class="row">
                     <div class="col-xs-11 col-sm-3 col-md-3 col-lg-3">
                         <a id="profile" href="/HelloCropit/ProfilePictureEditor">
-                            <img id="profileImg" class="picedit-viewer" src='${profilePicture}' alt="Profile Picture">
+                            <img id="profileImg" class="profile-viewer" src='${profilePicture}' alt="Profile Picture">
                         </a>
                     </div>
                  </div>  
