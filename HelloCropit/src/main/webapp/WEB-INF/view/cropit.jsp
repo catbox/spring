@@ -130,7 +130,7 @@
     	messageArray[3] = '<spring:message code="cropit.file.too.large"/>';    	
     	messageArray[4] = '<spring:message code="cropit.undefined.platform"/>';
     	messageArray[5] = '<spring:message code="cropit.file.reader.support"/>';
-    	messageArray[6] = '<spring:message code="cropit.profile.picture.cancellation"/>';
+    	messageArray[6] = "<spring:message code="cropit.profile.picture.cancellation"/>";
     	
     	cropIt.setUp(messageArray);
     });
