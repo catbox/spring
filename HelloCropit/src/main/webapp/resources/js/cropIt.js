@@ -411,4 +411,9 @@ cropIt.convertCanvasToImage = function(canvas) {
 	var image = new Image();
 	image.src = canvas.toDataURL("image/jpeg", 1.0);
 	return image;
-}
+};
+
+//Set reload once
+cropIt.setReloadOnce = function() {
+	localStorage.setItem("reloadOnce", "true");
+};

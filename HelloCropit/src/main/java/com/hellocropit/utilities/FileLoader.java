@@ -278,7 +278,7 @@ public class FileLoader {
 			userProfilePicturePath = FileLoaderConstants.ROOT_FOLDER + userProfilePicturePath;
 		}
 		catch(Exception exception) {			
-			System.err.println("Exception: " + exception.getMessage());
+			userProfilePicturePath = FileLoaderConstants.DEFAULT_PROFILE_PICTURE;
 			return userProfilePicturePath;
 		}
 		
