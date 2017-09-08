@@ -1024,6 +1024,20 @@ pictureEditor.saveProfilePicture = function() {
 			        				                     "<b>Cropped Coordinate X: </b>" + croppedCoordinateX + "<br>" + 
 			        				                     "<b>Cropped Coordinate Y: </b>" + croppedCoordinateY + "<br>");
 	            		}
+	            		else {
+	            			croppedCoordinateX = croppedPictureX;
+					  		croppedCoordinateY = croppedPictureY;
+					  		resizedPictureWidth = picPreviewWidth;
+			        		resizedPictureHeight = picPreviewHeight;
+			        		$("#cropperTracker2").append("<b>Schema: </b>1-II" + "<br>" +
+			        									 "<b>Initial Picture Orientation: </b>" + pictureEditor.initialPictureOrientation + "<br>" + 
+			        									 "<b>Initial Picture Rotation: </b>" + pictureEditor.initialPictureRotation + "<br>" +
+			        									 "<b>Picture Orientation: </b>" + pictureEditor.pictureOrientation + "<br>" + 
+			        									 "<b>Picture Rotation: </b>" + pictureEditor.pictureRotation + "<br>" +  
+			        				                     "<b>Manual Degree of Rotation: </b>" + pictureEditor.manualDegreeOfRotation + "<br>" + 
+			        				                     "<b>Cropped Coordinate X: </b>" + croppedCoordinateX + "<br>" + 
+			        				                     "<b>Cropped Coordinate Y: </b>" + croppedCoordinateY + "<br>");
+	            		}
 	            		
 	            		break;
 	
