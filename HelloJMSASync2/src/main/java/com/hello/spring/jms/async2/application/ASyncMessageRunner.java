@@ -26,7 +26,7 @@ public class ASyncMessageRunner {
 		// Message Attributes
 		String messageSender2 = "Sam";
 		String messageReceiver2 = "CocoLekat";
-		String messageContent2 = "Where do you live right now? You left without give us your address!";
+		String messageContent2 = "Where do you live right now? You left without giving us your address!";
 		
 		// Send the message
 		asyncMessageSender.sendMessage(messageSender2, messageReceiver2, messageContent2);
