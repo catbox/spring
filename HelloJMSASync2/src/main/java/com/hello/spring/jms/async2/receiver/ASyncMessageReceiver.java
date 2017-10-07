@@ -25,7 +25,7 @@ public class ASyncMessageReceiver implements MessageListener {
 			String messageReceiver = message.getStringProperty(Constants.MESSAGE_RECEIVER);
 			String messageContent = message.getStringProperty(Constants.MESSAGE_CONTENT);
 			
-			LOGGER.info("SENDER: " + messageSender + " - RECEIVER: " + messageReceiver + " - MESSAGE: " + messageContent);
+			LOGGER.info("RECEIVER: " + messageReceiver + " - SENDER: " + messageSender + " - MESSAGE: " + messageContent);
 		} 
 		catch (JMSException jmsException) {
 			LOGGER.error(jmsException.getMessage());
