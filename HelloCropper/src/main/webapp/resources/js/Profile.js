@@ -9,12 +9,31 @@ var profile = profile || {};
 profile.setUp = function() {
 	
 	// Prevent caching
-	$.ajaxSetup({
-		cache:false
-	});
+	profile.nocaching();
+
+	// On Start up
+	profile.startUp();
 	
 	// Prevents right click browser capabilities.
 	profile.disableRightClick();	
+};
+
+
+// Prevent caching
+profile.nocaching = function() {
+	$.ajaxSetup({
+		cache:false
+	});
+};
+
+// On start up
+profile.startUp = function() {
+	window.onload = function() {	
+		if(window.sessionStorage.reloadOnce) {
+			window.sessionStorage.removeItem("reloadOnce");
+			window.location.reload(true);						
+		}		
+	};
 };
 
 // Prevents right click browser capabilities.

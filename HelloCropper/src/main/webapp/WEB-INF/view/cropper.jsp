@@ -63,6 +63,7 @@
     </div>
     
     <!-- DEV ONLY -->
+    <!--
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div id="cropperTracker1"></div>
@@ -73,7 +74,8 @@
             <div id="cropperTracker2"></div>
         </div>
     </div>
-
+	-->
+	
     <!-- Select an image and edit it -->
     <div id="panelRow" class="row">
           <div id="panelColumnSize" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">       

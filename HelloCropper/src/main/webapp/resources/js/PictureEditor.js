@@ -1486,7 +1486,7 @@ pictureEditor.saveProfilePicture = function() {
 			  		if(picFitsCroppingArea) {
 						
 						// Show dialog that the profile picture is being saved.
-						//$(pictureEditor.modal).modal('show');
+						$(pictureEditor.modal).modal('show');
 						
 						try {
 							croppedCanvasContext.drawImage(rotatedCanvas, croppedCanvasCoordX, croppedCanvasCoordY, croppedImageWidth, croppedImageHeight, canvasCoordX, canvasCoordY, imageWidth, imageHeight);
@@ -1530,6 +1530,9 @@ pictureEditor.saveProfilePicture = function() {
 							pictureEditor.manualPictureOrientation = 0;
 							pictureEditor.manualDegreeOfRotation = 0;
 							pictureEditor.manualPictureRotation = false;
+							
+							// Set reload once
+							pictureEditor.setReloadOnce();
 							
 							// Send the picture.
 		            		pictureEditor.sendPicture(name, croppedFile, inputFile.name);
@@ -1754,6 +1757,7 @@ pictureEditor.blobToFile = function(someBlob, fileName) {
 
 // Send the picture.
 pictureEditor.sendPicture = function(someName, someFile, someFileName) {
+	
 	try {
 		var postStatus = "STATUS-OK";
 		var postMessage = "POST-OK";
@@ -1963,4 +1967,9 @@ pictureEditor.getZoomFactor = function() {
 		pictureEditor.showAlertMessage(pictureEditor.errorMessage);
 		return false;
 	}
+};
+
+// Set reload once
+pictureEditor.setReloadOnce = function() {
+	window.sessionStorage.setItem("reloadOnce", "true");
 };
