@@ -54,7 +54,7 @@ public class FileLoader {
 			}
 		}
 		catch(Exception exception) {
-			LOGGER.error("Exception: " + exception.getMessage());
+			LOGGER.error("Error creating directory: " + exception.getMessage());
 		}		
 	}
 	
@@ -79,7 +79,7 @@ public class FileLoader {
 			}
 		}
 		catch(Exception exception) {
-			LOGGER.error("Exception: " + exception.getMessage());
+			LOGGER.error("Error creating the user directory: " + exception.getMessage());
 		}
 		// Create user profile directory
 		createUserProfileDirectory(userRootDirectory);
@@ -114,13 +114,18 @@ public class FileLoader {
 	 * @return true if root directory exists else return false.
 	 */
 	private static boolean rootDirectoryExist() {
-				
-		rootDirectory = new File(getRootDirectoryPath());
 		
-		if(rootDirectory.exists()) {
-			return true;
+		try {
+			rootDirectory = new File(getRootDirectoryPath());
+			LOGGER.info("Root directory: " + rootDirectory);
+			
+			if(rootDirectory.exists()) {
+				return true;
+			}
 		}
-		
+		catch(Exception exception) {
+			LOGGER.error("Error reading the root directory: " + exception.getMessage());
+		}
 		return false;		
 	}
 	
@@ -131,17 +136,18 @@ public class FileLoader {
 			properties = new Properties();
 			properties.load(rootPathStream);
 			rootDirectoryPath = properties.getProperty(FileLoaderConstants.ROOT);
+			LOGGER.info("Root directory: " + rootDirectoryPath);
 		} 
 		catch(FileNotFoundException fileNotFoundException) {
-			LOGGER.error("FileNotFoundException: " + fileNotFoundException.getMessage());
+			LOGGER.error("File Not Found Error: " + fileNotFoundException.getMessage());
 			return FileLoaderConstants.EMPTY_STRING;
 		}		
 		catch(IOException ioException) {
-			LOGGER.error("IOException: " + ioException.getMessage());
+			LOGGER.error("Input Output Error: " + ioException.getMessage());
 			return FileLoaderConstants.EMPTY_STRING;
 		}		
 		catch(Exception exception) {
-			LOGGER.error("Exception: " + exception.getMessage());
+			LOGGER.error("Error reading the root path stream: " + exception.getMessage());
 			return FileLoaderConstants.EMPTY_STRING;
 		}
 
@@ -154,7 +160,13 @@ public class FileLoader {
 	 */
 	private static boolean userDirectoryExist(String userRootDirectory) {
 		
-		userDirectory = new File(getRootDirectoryPath() + File.separator + userRootDirectory);
+		try {
+			userDirectory = new File(getRootDirectoryPath() + File.separator + userRootDirectory);
+			LOGGER.info("User directory: " + userDirectory);
+		}
+		catch(Exception exception) {
+			LOGGER.error("Error creating the user directory path");
+		}
 		
 		if(userDirectory.exists()) {
 			return true;
@@ -170,7 +182,13 @@ public class FileLoader {
 	 */
 	public static boolean userProfileDirectoryExist(String userRootDirectory) {
 		
-		userProfileDirectory = new File(rootDirectoryPath + File.separator + userRootDirectory + "Profile");
+		try {
+			userProfileDirectory = new File(rootDirectoryPath + File.separator + userRootDirectory + "Profile");
+			LOGGER.info("User profile directory: " + userProfileDirectory);
+		}
+		catch(Exception exception) {
+			LOGGER.error("Error creating the user profile directory");
+		}
 		
 		if(userProfileDirectory.exists()) {
 			return true;
@@ -226,7 +244,7 @@ public class FileLoader {
 		    }
 		}
 		catch(Exception exception) {
-			LOGGER.error("Exception: " + exception);
+			LOGGER.error("Error deleting the user directory content: " + exception.getMessage());
 		}
 	    return(directoryPath.delete());
 	}
@@ -259,10 +277,10 @@ public class FileLoader {
 			}
 		} 
 		catch(IOException ioException) {
-			LOGGER.error("IOException: " + ioException.getMessage());
+			LOGGER.error("Input Output Exception: " + ioException.getMessage());
 		}
 		catch(Exception exception) {
-			LOGGER.error("Exception: " + exception.getMessage());
+			LOGGER.error("Error uploading the user profile picture: " + exception.getMessage());
 		}
 	}
 	
@@ -276,7 +294,13 @@ public class FileLoader {
 		String userProfilePictureDrivePath = FileLoaderConstants.EMPTY_STRING;			
 		String userProfilePicturePath = FileLoaderConstants.DEFAULT_PROFILE_PICTURE;
 		
-		userProfileDirectory = new File(getRootDirectoryPath() + File.separator + user + File.separator + "Profile");
+		try {
+			userProfileDirectory = new File(getRootDirectoryPath() + File.separator + user + File.separator + "Profile");
+			LOGGER.info("User profile directory: " + userProfileDirectory);
+		}
+		catch(Exception exception) {
+			LOGGER.error("Error creating the user profile directory");
+		}
 		
 		try {
 			File[] userProfilePictureList = userProfileDirectory.listFiles();
@@ -294,7 +318,7 @@ public class FileLoader {
 			userProfilePicturePath = FileLoaderConstants.ROOT_FOLDER + userProfilePicturePath;
 		}
 		catch(Exception exception) {			
-			LOGGER.error("Exception: " + exception.getMessage());
+			LOGGER.error("Error reading the user profile picture: " + exception.getMessage());
 			return userProfilePicturePath;
 		}
 		
