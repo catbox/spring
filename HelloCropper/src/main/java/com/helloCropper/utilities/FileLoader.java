@@ -15,6 +15,9 @@ import java.util.Properties;
 import org.apache.commons.io.FileUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.helloCropper.Constants.FileLoaderConstants;
 
 public class FileLoader {
@@ -33,6 +36,8 @@ public class FileLoader {
 	public static String[] fileExtensionArray = {"BMP", "GIF", "ICO", "JFIF", "JPEG", "JPG", "PNG", "TIF", "TIFF"};
 	// List of valid file extension (suffix)
 	public static List<String> fileExtensionList = new ArrayList<String>(Arrays.asList(fileExtensionArray));
+	// Logger
+	private static final Logger LOGGER = LoggerFactory.getLogger(FileLoader.class);
 
 	/**
 	 * Creates the root directory for all users
@@ -42,14 +47,14 @@ public class FileLoader {
 		try {		
 			if(!rootDirectoryExist()) {
 				rootDirectory.mkdir();
-				System.out.println("Directory was created at: " + rootDirectory.getAbsolutePath());
+				LOGGER.info("Directory was created at: " + rootDirectory.getAbsolutePath());
 			}
 			else {
-				System.out.println("Directory already exists at: " + rootDirectory.getAbsolutePath() + " *** Directory not created!");
+				LOGGER.info("Directory already exists at: " + rootDirectory.getAbsolutePath() + " - Directory not created");
 			}
 		}
 		catch(Exception exception) {
-			System.out.println("Exception: " + exception.getMessage());
+			LOGGER.error("Exception: " + exception.getMessage());
 		}		
 	}
 	
@@ -58,19 +63,25 @@ public class FileLoader {
 	 * @param userRootDirectory
 	 */
 	public static void createUserDirectory(String userRootDirectory) {
-		
+		// Create root directory
 		createRootDirectory();
 		
-		userDirectory = new File(rootDirectoryPath + File.separator + userRootDirectory);
-		
-		if(!userDirectoryExist(userRootDirectory)) {
-			userDirectory.mkdir();
-			System.out.println("User directory was created at: " + userDirectory.getAbsolutePath());
+		try {
+			userDirectory = new File(rootDirectoryPath + File.separator + userRootDirectory);
+			LOGGER.info("User Directory: " + userDirectory);
+			
+			if(!userDirectoryExist(userRootDirectory)) {
+				userDirectory.mkdir();
+				LOGGER.info("User directory was created at: " + userDirectory.getAbsolutePath());
+			}
+			else {
+				LOGGER.info("User directory already exists at: " + userDirectory.getAbsolutePath() + " - Directory was not created");
+			}
 		}
-		else {
-			System.out.println("User directory already exists at: " + userDirectory.getAbsolutePath() + " *** Directory not created!");
+		catch(Exception exception) {
+			LOGGER.error("Exception: " + exception.getMessage());
 		}
-		
+		// Create user profile directory
 		createUserProfileDirectory(userRootDirectory);
 	}
 	
@@ -81,18 +92,19 @@ public class FileLoader {
 	public static void createUserProfileDirectory(String userRootDirectory) {
 		
 		userProfileDirectory = new File(rootDirectoryPath + File.separator + userRootDirectory + File.separator + "Profile");
+		LOGGER.info("User Profile Directory: " + userProfileDirectory);
 		
 		if(!userProfileDirectory.exists()) {
 			userProfileDirectory.mkdir();
-			System.out.println("User profile directory was created at: " + userProfileDirectory.getAbsolutePath());
+			LOGGER.info("User profile directory was created at: " + userProfileDirectory.getAbsolutePath());
 		}
 		else {
 			try {
 				FileUtils.cleanDirectory(userProfileDirectory);
-				System.out.println("User profile directory already exists at: " + userProfileDirectory.getAbsolutePath() + " *** Profile Directory not created!");
+				LOGGER.info("User profile directory already exists at: " + userProfileDirectory.getAbsolutePath() + " - Profile Directory not created");
 			} 
 			catch(IOException ioException) {
-				System.out.println("Error cleaning user profile directory: " + ioException.getMessage());
+				LOGGER.error("Error cleaning user profile directory: " + ioException.getMessage());
 			}
 		}
 	}
@@ -121,15 +133,15 @@ public class FileLoader {
 			rootDirectoryPath = properties.getProperty(FileLoaderConstants.ROOT);
 		} 
 		catch(FileNotFoundException fileNotFoundException) {
-			System.out.println("FileNotFoundException: " + fileNotFoundException.getMessage());
+			LOGGER.error("FileNotFoundException: " + fileNotFoundException.getMessage());
 			return FileLoaderConstants.EMPTY_STRING;
 		}		
 		catch(IOException ioException) {
-			System.out.println("IOException: " + ioException.getMessage());
+			LOGGER.error("IOException: " + ioException.getMessage());
 			return FileLoaderConstants.EMPTY_STRING;
 		}		
 		catch(Exception exception) {
-			System.out.println("Exception: " + exception.getMessage());
+			LOGGER.error("Exception: " + exception.getMessage());
 			return FileLoaderConstants.EMPTY_STRING;
 		}
 
@@ -198,19 +210,24 @@ public class FileLoader {
 	 * @return true if deletion of the user directory was successful else false
 	 */
 	private static boolean deleteUserDirectoryContent(File directoryPath) {
-		if(directoryPath.exists()) {
-	      File[] userDirectoryContent = directoryPath.listFiles();
-	      for(int i=0; i<userDirectoryContent.length; i++) {
-	    	 // Found a directory - Call back the method recursively
-	         if(userDirectoryContent[i].isDirectory()) {
-	           deleteUserDirectoryContent(userDirectoryContent[i]);
-	         }
-	         // Found a file - Delete it
-	         else {
-	           userDirectoryContent[i].delete();
-	         }
-	      }
-	    }
+		try {
+			if(directoryPath.exists()) {
+		      File[] userDirectoryContent = directoryPath.listFiles();
+		      for(int i=0; i<userDirectoryContent.length; i++) {
+		    	 // Found a directory - Call back the method recursively
+		         if(userDirectoryContent[i].isDirectory()) {
+		           deleteUserDirectoryContent(userDirectoryContent[i]);
+		         }
+		         // Found a file - Delete it
+		         else {
+		           userDirectoryContent[i].delete();
+		         }
+		      }
+		    }
+		}
+		catch(Exception exception) {
+			LOGGER.error("Exception: " + exception);
+		}
 	    return(directoryPath.delete());
 	}
 	
@@ -238,14 +255,14 @@ public class FileLoader {
 	            stream.close();			
 			}
 			else {
-				System.err.println("File extension is not supported");
+				LOGGER.error("File extension is not supported");
 			}
 		} 
 		catch(IOException ioException) {
-			System.err.println("IOException: " + ioException.getMessage());
+			LOGGER.error("IOException: " + ioException.getMessage());
 		}
 		catch(Exception exception) {
-			System.err.println("Exception: " + exception.getMessage());
+			LOGGER.error("Exception: " + exception.getMessage());
 		}
 	}
 	
@@ -277,10 +294,11 @@ public class FileLoader {
 			userProfilePicturePath = FileLoaderConstants.ROOT_FOLDER + userProfilePicturePath;
 		}
 		catch(Exception exception) {			
-			System.err.println("Exception: " + exception.getMessage());
+			LOGGER.error("Exception: " + exception.getMessage());
 			return userProfilePicturePath;
 		}
 		
+		LOGGER.info("User Profile Picture Path: " + userProfilePicturePath);
 		return userProfilePicturePath;	
 	}
 
