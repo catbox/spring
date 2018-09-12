@@ -15,12 +15,14 @@
     <link href="resources/css/profile.css" rel="stylesheet" type="text/css">
     <!-- BrowserSync target script: IP Address should the one of the development machine -->
     <!-- <script src="http://XXX.XXX.XXX.XXX:8080/target/target-script-min.js#browsersync"></script> -->
+    <!-- 
     <script type="text/javascript">    
 	 	// Prevent caching
 		$.ajaxSetup({
 			cache:false
 		});
 	</script>
+	-->
 </head>
 
 <%
