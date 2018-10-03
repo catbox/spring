@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8">
 <head>
-<title>Home</title>
+<title>Login</title>
 </head>
 
 <body>	
