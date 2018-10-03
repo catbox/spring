@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.hello.world</groupId>
+  <artifactId>hello.world</artifactId>
+  <packaging>war</packaging>
+  <version>1.0.0</version>
+  <name>Hello World</name>
+  <url>http://maven.apache.org</url>
+  
+  <properties>
+      <spring.version>5.1.0.RELEASE</spring.version>
+      <javax.servlet.api>2.5</javax.servlet.api>
+      <hibernate.validator.version>5.0.0.Final</hibernate.validator.version>
+      <jackson.core.version>2.4.3</jackson.core.version>
+      <jackson.annotations.version>2.4.3</jackson.annotations.version>
+      <guava.version>18.0</guava.version>
+      <junit.version>4.12</junit.version>
+  </properties>
+  
+  <dependencies>
+	
+	<!-- Spring Framework -->
+    <dependency>
+    	<groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+      
+    <!-- Java Servlet API -->
+	<dependency>
+    	<groupId>javax.servlet</groupId>
+		<artifactId>servlet-api</artifactId>
+		<version>${javax.servlet.api}</version>
+	</dependency>
+	 
+	<!-- Hibernate Framework: Allows to express and validate application constraints -->
+	<dependency>
+    	<groupId>org.hibernate</groupId>
+    	<artifactId>hibernate-validator</artifactId>
+    	<version>${hibernate.validator.version}</version>
+	</dependency>
+	
+	<!-- Formatter for JSON data format -->
+    <dependency>
+    	<groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+        <version>${jackson.core.version}</version>
+    </dependency>
+        
+    <dependency>
+    	<groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-annotations</artifactId>
+        <version>${jackson.annotations.version}</version>
+    </dependency>
+	 
+	<!-- Guava Framework: Used for collections, caching, primitives support, concurrency 
+         libraries, common annotations, string processing & I/O -->
+  	<dependency>
+		<groupId>com.google.guava</groupId>
+		<artifactId>guava</artifactId>
+		<version>${guava.version}</version>
+	</dependency>
+  	
+  	<!-- Testing Framework -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>  
+  </dependencies>
+  
+  <build>
+    <finalName>HelloWorld</finalName>
+  </build>
+  
+</project>
