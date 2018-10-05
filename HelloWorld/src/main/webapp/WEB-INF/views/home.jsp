@@ -8,8 +8,22 @@
 </head>
 
 <body>
-	<p>FirstName: ${firstName}</p>
-    <p>LastName: ${lastName}</p>
-    <a href="/HelloWorld/login">Logout</a>	
+	<h1 id="helloWorld"></h1>
+	<h3 id="sayHello"></h3>
+	<p>First Name: ${firstName}</p>
+    <p>Last Name: ${lastName}</p>
+    <a href="/HelloWorld/login">Logout</a>
+    
+    <!-- javascript -->
+    <script src="resources/js/jquery-1.11.2.min.js"></script>
+    <script src="resources/js/greetings.js"></script> 
+    
+    <script type="text/javascript">
+		$(document).ready(function() {
+			greetings.setUp();
+			// The function sayHello() can be called by the following statement:
+			// greetings.sayHello();
+		});
+	</script>
 </body>  
 </html> 
