@@ -7,26 +7,30 @@
 <head>
 <meta charset="utf-8">
 <head>
-<title>Login</title>
+<title>home</title>
 </head>
 
 <body>	
-    <form:form method="post" action="/HelloWorld/login" modelAttribute="loginForm">
-        <table>
-            <tr>
-                <td><form:label path="firstName"><strong>First Name</strong></form:label></td>
-                <td><form:input path="firstName"/></td>
-                <td><font color="red"><form:errors path="firstName"></form:errors></font></td>
-            </tr>
-            <tr>
-                <td><form:label path="lastName"><strong>Last Name</strong></form:label></td>
-                <td><form:input path="lastName"/></td>
-                <td><font color="red"><form:errors path="lastName"></form:errors></font></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Login"/></td>
-            </tr>
-        </table>
-    </form:form>      
+	<h1 id="helloWorld"></h1>
+	<h3 id="welcome"></h3>
+    <p>First name:</p>
+  	<input id="firstName" type="text" name="firstname">
+  	<br>
+  	<p>Last name:</p>
+  	<input id="lastName" type="text" name="lastname">
+  	<br><br>
+	<a id="sayHello" href="/HelloWorld/login">Greeting</a>
+	
+	<button id="sayHello" type="button">Say Hello</button> 
+	
+    <!-- javascript -->
+    <script src="resources/js/jquery-1.11.2.min.js"></script>
+    <script src="resources/js/greeting.js"></script> 
+    
+    <script type="text/javascript">
+		$(document).ready(function() {
+			greeting.setUp();
+		});
+	</script>      
 </body>
 </html>
