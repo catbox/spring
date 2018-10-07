@@ -27,12 +27,5 @@
     
     <!-- Define mapping for resources such as css, fonts, icons & js -->
     <mvc:resources mapping="/resources/**" location="/resources/"/>
- 	 
- 	<!-- The interceptor captures requests before or after the controller or just before the response is sent to the view -->	
-    <mvc:interceptors>
-        <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-            <property name="paramName" value="language"/>
-        </bean>
-    </mvc:interceptors>
-	
+ 
 </beans>
