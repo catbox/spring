@@ -34,14 +34,5 @@
             <property name="paramName" value="language"/>
         </bean>
     </mvc:interceptors>
-    
-  	<!-- Converts form data to an object -->
-	<bean id="loginFormConverter" class="com.hello.world.form.converter.LoginFormConverter"></bean>
-	
-	<!-- Bean for Person -->
-	<bean id="person" class="com.hello.world.transfer.Person" scope="prototype"/>
-	
-	<!-- Bean for PersonDAO -->
-	<bean id="personDAO" class="com.hello.world.dao.PersonDAO"/>
 	
 </beans>
