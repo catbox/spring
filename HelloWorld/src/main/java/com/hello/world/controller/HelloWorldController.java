@@ -7,19 +7,20 @@ package com.hello.world.controller;
 	@Controller("HelloWorldController")
 	public class HelloWorldController {
 		
-		/** Load the login page **/
+		/** Load the helloWorld page **/
 		@RequestMapping(value = "/", method = RequestMethod.GET)
-	    public String loadLoginPage() {
-			// Go to the login page
-			return "login";
+	    public String loadHelloWorldPage() {
+			// Go to the helloWorld page
+			return "helloWorld";
 	    }
 		
 		/** Login controller **/
-		@RequestMapping(value = "/login", method = RequestMethod.GET)
-		public String login() {
+		@RequestMapping(value = "/sayHello", method = RequestMethod.GET)
+		public String sayHello() {
 			// Call greeting.sayHello(firstName, lastName) such that it does the same thing as clicking on the button "Say Hello".
 			// In this case you can hard code the first name and last name instead of reading from the input textfields.
 			System.out.println("Hello World!");
-			return "login";
+			// Go to the helloWorld page
+			return "helloWorld";
 		}	
 }
