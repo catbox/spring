@@ -41,7 +41,7 @@
             <div class="panel panel-info picedit-preview-panel">
                 <div class="row">
                     <div class="col-xs-11 col-sm-3 col-md-3 col-lg-3">
-                        <a id="profile" href="/HelloCropit/ProfilePictureEditor">
+                        <a id="profile" href="/helloCropit/ProfilePictureEditor">
                             <img id="profileImg" class="profile-viewer" src='${profilePicture}' alt="Profile Picture">
                         </a>
                     </div>
