@@ -41,12 +41,12 @@ cropIt.setUp = function(array) {
 	}
 	
 	// Load FileAPI.js
-	$.getScript("/HelloCropit/resources/js/FileAPI.js", function() {
+	$.getScript("/helloCropit/resources/js/FileAPI.js", function() {
 		// Do nothing.
 	});
 	
 	// Load exif.js
-	$.getScript("/HelloCropit/resources/js/ExifReader.js", function() {
+	$.getScript("/helloCropit/resources/js/ExifReader.js", function() {
 		// Do nothing.
 	});
 
@@ -354,11 +354,11 @@ cropIt.sendPicture = function(someName, someFile, someFileName) {
 			    },
 				timeout:10000,
 				type:"POST",
-			    url:"/HelloCropit/loadProfilePicture"
+			    url:"/helloCropit/loadProfilePicture"
 			 }).done(function() {
 				window.setTimeout(function() {
 					$("#cropit-modal").modal('hide');
-					window.location.href = cropIt.locationOrigin + "/HelloCropit/";
+					window.location.href = cropIt.locationOrigin + "/helloCropit/";
 				}, 5000);
 		 	 }).fail(function() {
 				cropIt.errorMessage = "Your profile picture failed to be updated!";
