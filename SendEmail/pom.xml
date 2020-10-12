@@ -12,7 +12,7 @@
   	<spring.version>4.0.5.RELEASE</spring.version>
   	<spring.integration.version>4.3.6.RELEASE</spring.integration.version>
   	<mail.version>1.5.6</mail.version>
-  	<junit.version>4.12</junit.version> 	
+  	<junit.version>4.13.1</junit.version> 	
   </properties>
   
   <dependencies>
