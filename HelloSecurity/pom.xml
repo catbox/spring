@@ -11,12 +11,15 @@
   <url>http://www.hello.com</url>
   
   <properties>
+  	<java.version>11</java.version>
   	<spring.version>4.0.5.RELEASE</spring.version>
   	<spring.security.version>3.2.5.RELEASE</spring.security.version>
   	<junit.version>4.12</junit.version>
   	<maven.compiler.plugin.version>3.2</maven.compiler.plugin.version>
   	<java.version>1.7</java.version>
   	<javax.servlet.api>2.5</javax.servlet.api>
+  	<maven.war.version>3.3.1</maven.war.version>
+  	<maven.compiler.version>3.8.1</maven.compiler.version>
   </properties>
   
   <dependencies>
@@ -72,18 +75,27 @@
   </dependencies>
   
   <build>
-  	<finalName>HelloSecurity</finalName>
-	<plugins>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-compiler-plugin</artifactId>
-			<version>${maven.compiler.plugin.version}</version>
-			<configuration>
-				<source>${java.version}</source>
-				<target>${java.version}</target>
-			</configuration>
-		</plugin>
-	</plugins>
+    <finalName>HelloSecurity</finalName>
+    <plugins>
+    	<plugin>
+    		<groupId>org.apache.maven.plugins</groupId>
+        	<artifactId>maven-war-plugin</artifactId>
+        	<version>${maven.war.version}</version>
+            <configuration>
+                <source>${java.version}</source>
+                <target>${java.version}</target>
+            </configuration>
+        </plugin>
+    	<plugin>
+    		<groupId>org.apache.maven.plugins</groupId>
+        	<artifactId>maven-compiler-plugin</artifactId>
+        	<version>${maven.compiler.version}</version>
+            <configuration>
+                <source>${java.version}</source>
+                <target>${java.version}</target>
+            </configuration>
+        </plugin>
+    </plugins>
   </build>
   
 </project>

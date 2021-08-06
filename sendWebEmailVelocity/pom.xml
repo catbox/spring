@@ -8,7 +8,8 @@
   <name>SendWebEmailVelocity</name>
   <url>http://www.wh.com</url>
   
-  <properties>  
+  <properties> 
+    <java.version>11</java.version>
   	<spring.version>4.0.5.RELEASE</spring.version>
   	<spring.integration.version>4.3.6.RELEASE</spring.integration.version>
   	<validation.api.version>1.1.0.Final</validation.api.version>
@@ -25,6 +26,8 @@
   	<slf4j.version>1.7.10</slf4j.version>
   	<log4j.version>1.2.17</log4j.version>
   	<junit.version>4.12</junit.version>
+  	<maven.war.version>3.3.1</maven.war.version>
+  	<maven.compiler.version>3.8.1</maven.compiler.version>
   </properties>
  
   <dependencies>
@@ -168,9 +171,29 @@
 	</dependency>
     
   </dependencies>
-
+  
   <build>
     <finalName>sendWebEmailVelocity</finalName>
+    <plugins>
+    	<plugin>
+    		<groupId>org.apache.maven.plugins</groupId>
+        	<artifactId>maven-war-plugin</artifactId>
+        	<version>${maven.war.version}</version>
+            <configuration>
+                <source>${java.version}</source>
+                <target>${java.version}</target>
+            </configuration>
+        </plugin>
+    	<plugin>
+    		<groupId>org.apache.maven.plugins</groupId>
+        	<artifactId>maven-compiler-plugin</artifactId>
+        	<version>${maven.compiler.version}</version>
+            <configuration>
+                <source>${java.version}</source>
+                <target>${java.version}</target>
+            </configuration>
+        </plugin>
+    </plugins>
   </build>
   
 </project>
