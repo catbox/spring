@@ -3,15 +3,18 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.hello.spring</groupId>
-  <artifactId>hello-database</artifactId>
+  <groupId>com.hellodatabase</groupId>
+  <artifactId>hellodatabase</artifactId>
   <version>1.0.0</version>
-  <name>Hello Database</name>
-  <url>http://www.hello.com</url>
+  <name>HelloDatabase</name>
+  <url>http://www.hellodatabase.com</url>
   
   <properties>
+  	  <java.version>11</java.version>
       <guava.version>18.0</guava.version>
       <junit.version>4.11</junit.version>
+      <maven.war.version>3.3.1</maven.war.version>
+  	  <maven.compiler.version>3.8.1</maven.compiler.version>
   </properties>
   
   <dependencies>
@@ -33,9 +36,29 @@
   
   </dependencies>
   
-   <!-- Project Name in M2 Repository -->
+  <!-- Project Name in M2 Repository -->
   <build>
-      <finalName>HelloDatabase</finalName>
+    <finalName>HelloDatabase</finalName>
+    <plugins>
+    	<plugin>
+    		<groupId>org.apache.maven.plugins</groupId>
+        	<artifactId>maven-war-plugin</artifactId>
+        	<version>${maven.war.version}</version>
+            <configuration>
+                <source>${java.version}</source>
+                <target>${java.version}</target>
+            </configuration>
+        </plugin>
+    	<plugin>
+    		<groupId>org.apache.maven.plugins</groupId>
+        	<artifactId>maven-compiler-plugin</artifactId>
+        	<version>${maven.compiler.version}</version>
+            <configuration>
+                <source>${java.version}</source>
+                <target>${java.version}</target>
+            </configuration>
+        </plugin>
+    </plugins>
   </build>
   
 </project>
