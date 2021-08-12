@@ -22,7 +22,7 @@
   		But with Tomcat 7.0.40 you will need hibernate validator 5.0.1
   		<hibernate.validator.version>5.0.1.Final</hibernate.validator.version> 
   	-->
-  	<hibernate.validator.version>4.3.2.Final</hibernate.validator.version>
+  	<hibernate.validator.version>5.3.5.Final</hibernate.validator.version>
   	<inject.version>1</inject.version>
   	<java.version>1.7</java.version>
   	<javax.servlet.api>2.5</javax.servlet.api>
