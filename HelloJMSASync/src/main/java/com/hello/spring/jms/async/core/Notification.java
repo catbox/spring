@@ -48,7 +48,7 @@ public class Notification implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Notification [id=" + id + ", message= " + message + "]";
+		return "Notification [id =" + id + ", message = " + message + "]";
 	}
 	
 }
