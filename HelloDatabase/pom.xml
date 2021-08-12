@@ -12,7 +12,7 @@
   <properties>
   	  <java.version>11</java.version>
       <guava.version>18.0</guava.version>
-      <junit.version>4.11</junit.version>
+      <junit.version>4.13.1</junit.version>
       <maven.war.version>3.3.1</maven.war.version>
   	  <maven.compiler.version>3.8.1</maven.compiler.version>
   </properties>
