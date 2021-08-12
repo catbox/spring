@@ -17,7 +17,7 @@
         <javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>
         <validation.api.version>1.1.0.Final</validation.api.version>
         <hibernate.validator.version>5.0.0.Final</hibernate.validator.version>
-        <commons.io.version>2.4</commons.io.version>
+        <commons.io.version>2.7</commons.io.version>
         <commons.codec>1.9</commons.codec>
         <commons.fileupload.version>1.3.1</commons.fileupload.version>
         <jackson.core.version>2.4.3</jackson.core.version>
