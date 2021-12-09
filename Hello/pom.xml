@@ -28,7 +28,7 @@
   	<javax.servlet.api>2.5</javax.servlet.api>
   	<jackson.core.version>2.4.3</jackson.core.version>
   	<jackson.annotations.version>2.4.3</jackson.annotations.version>
-  	<jackson.databind.version>2.4.3</jackson.databind.version>
+  	<jackson.databind.version>2.9.10.8</jackson.databind.version>
   	<log4j.version>1.2.17</log4j.version>
   	<hello.database>1.0.0</hello.database>
   </properties>
