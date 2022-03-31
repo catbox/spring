@@ -12,7 +12,7 @@
   	
   	<properties>
   		<java.version>11</java.version>
-	  	<spring.version>4.0.5.RELEASE</spring.version>
+	  	<spring.version>5.3.18</spring.version>
 	  	<javax.servlet.api>2.5</javax.servlet.api>
 	  	<javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>
 	  	<validation.api.version>1.1.0.Final</validation.api.version>
