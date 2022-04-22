@@ -11,7 +11,7 @@
   
   <properties>
   	<java.version>11</java.version>
-  	<spring.version>4.0.5.RELEASE</spring.version>	
+  	<spring.version>5.3.19</spring.version>	
   	<javax.servlet.api>2.5</javax.servlet.api> 
   	<maven.compiler.plugin.version>3.2</maven.compiler.plugin.version> 
   	<inject.version>1</inject.version>
