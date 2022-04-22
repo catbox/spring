@@ -10,7 +10,7 @@
   
   <properties> 
     <java.version>11</java.version>
-  	<spring.version>4.0.5.RELEASE</spring.version>
+  	<spring.version>5.3.19</spring.version>
   	<spring.integration.version>4.3.6.RELEASE</spring.integration.version>
   	<validation.api.version>1.1.0.Final</validation.api.version>
   	<hibernate.validator.version>4.3.2.Final</hibernate.validator.version>
