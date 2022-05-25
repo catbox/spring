@@ -11,7 +11,7 @@
   <url>http://www.hello.com</url>
   
   <properties>  
-  	<spring.version>4.0.5.RELEASE</spring.version>
+  	<spring.version>5.2.22.RELEASE</spring.version>
   	<activemq.version>5.10.0</activemq.version>
   	<junit.version>4.12</junit.version>
   </properties>
