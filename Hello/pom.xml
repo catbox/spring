@@ -11,7 +11,7 @@
   <url>http://www.hello.com</url>
   
   <properties>  
-  	<spring.version>4.0.5.RELEASE</spring.version>
+  	<spring.version>6.0.0</spring.version>
   	<validation.api.version>1.1.0.Final</validation.api.version>
   	<!-- 
   		I initially try to use hibernate validator 5.0.1 but it did not work with TomEE 1.7.1
